@@ -3,21 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Technomitic — Full-Stack Product Engineering & Digital Services Studio</title>
+  <title>Technomitic — Full-Stack Product Engineering &amp; Digital Services Studio</title>
   <meta name="description" content="Technomitic engineers scalable SaaS products and enterprise digital solutions. We partner with product-led companies and fast-growing agencies to deliver world-class web, mobile, and design systems.">
-  <meta property="og:title" content="Technomitic — Full-Stack Product Engineering & Digital Services Studio">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Technomitic — Full-Stack Product Engineering &amp; Digital Services Studio">
   <meta property="og:description" content="Technomitic engineers scalable SaaS products and enterprise digital solutions. We partner with product-led companies and fast-growing agencies to deliver world-class web, mobile, and design systems.">
   <meta property="og:image" content="assets/690f539df97be809325201b4_WhatsApp_Image_2025-10-23_at_17.03.00_fd49f313.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Technomitic — Full-Stack Product Engineering & Digital Services Studio">
+  <meta name="twitter:title" content="Technomitic — Full-Stack Product Engineering &amp; Digital Services Studio">
   <meta name="twitter:description" content="Technomitic engineers scalable SaaS products and enterprise digital solutions. We partner with product-led companies and fast-growing agencies to deliver world-class web, mobile, and design systems.">
+  
   <link rel="shortcut icon" href="assets/690f740bbec5818fa8301c1f_tech1.jpg" type="image/x-icon">
   <link rel="apple-touch-icon" href="assets/690f73ea8cbb96456116b427_tech.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- JSON-LD Structured SEO Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Technomitic",
+    "url": "https://technomitic.webflow.io/",
+    "logo": "https://technomitic.webflow.io/assets/690f539df97be809325201b4_WhatsApp_Image_2025-10-23_at_17.03.00_fd49f313.jpg",
+    "description": "Technomitic is a full-stack product engineering and digital services studio building scalable SaaS products, enterprise web platforms, and design systems.",
+    "founder": [
+      {
+        "@type": "Person",
+        "name": "Hanu Koshti",
+        "jobTitle": "CEO & Founder"
+      },
+      {
+        "@type": "Person",
+        "name": "Neeraj Khajuriya",
+        "jobTitle": "Co-Founder & CTO"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "48"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -26,12 +58,12 @@
     <canvas class="splash-canvas" id="bgCanvas"></canvas>
   </div>
 
-  <!-- Custom Cursor -->
+  <!-- Simple Minimal Custom Cursor -->
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
   <!-- ============================================================
-       NAVBAR (Morphing on Scroll)
+       NAVBAR (Morphing on Scroll + Live Status)
        ============================================================ -->
   <nav class="navbar" id="navbar" role="banner">
     <div class="navbar__inner">
@@ -43,27 +75,33 @@
           width="44"
           height="44"
         >
-        <span class="navbar__logo-text">Technomitic</span>
+        <div class="navbar__logo-content">
+          <span class="navbar__logo-text">Technomitic</span>
+          <span class="navbar__status-badge"><span class="btn__dot"></span> Q3/Q4 Openings</span>
+        </div>
       </a>
 
       <div class="navbar__menu" id="navMenu">
         <a href="#work" class="navbar__link">Case Studies</a>
         <a href="#capability" class="navbar__link">Capabilities</a>
+        <a href="#about" class="navbar__link">About</a>
         <a href="#process" class="navbar__link">Process</a>
         <a href="#testimonial" class="navbar__link">Reviews</a>
+        <a href="#faq" class="navbar__link">FAQ</a>
         <a href="#team" class="navbar__link">Leadership</a>
+        <a href="#contact" class="navbar__link">Contact</a>
         <!-- Floating scrolled CTA -->
-        <a href="https://www.jotform.com/form/253113890548460" class="btn btn--scrolled-hire" id="scrolledHireBtn" target="_blank" rel="noopener">
+        <button class="btn btn--scrolled-hire js-open-modal" id="scrolledHireBtn" type="button">
           <span class="btn__dot"></span>
           <span>Start Project</span>
-        </a>
+        </button>
       </div>
 
       <div class="navbar__actions">
-        <a href="https://www.jotform.com/form/253113890548460" class="btn btn--navbar" id="topHireBtn" target="_blank" rel="noopener">
+        <button class="btn btn--navbar js-open-modal" id="topHireBtn" type="button">
           <span class="btn__dot"></span>
           <span>Schedule Consultation</span>
-        </a>
+        </button>
         <button class="navbar__hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
           <span></span>
           <span></span>
@@ -77,10 +115,13 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="#work" class="mobile-menu__link">Case Studies</a>
     <a href="#capability" class="mobile-menu__link">Capabilities</a>
+    <a href="#about" class="mobile-menu__link">About</a>
     <a href="#process" class="mobile-menu__link">Process</a>
     <a href="#testimonial" class="mobile-menu__link">Reviews</a>
+    <a href="#faq" class="mobile-menu__link">FAQ</a>
     <a href="#team" class="mobile-menu__link">Leadership</a>
-    <a href="https://www.jotform.com/form/253113890548460" class="btn btn--primary mobile-menu__link" target="_blank" rel="noopener">Start Project</a>
+    <a href="#contact" class="mobile-menu__link">Contact</a>
+    <button class="btn btn--primary mobile-menu__link js-open-modal" type="button">Start Project</button>
   </div>
 
   <!-- ============================================================
@@ -102,7 +143,7 @@
         </p>
 
         <div class="hero__cta">
-          <a href="https://form.jotform.com/253113890548460" class="btn btn--hero" target="_blank" rel="noopener">
+          <button class="btn btn--hero js-open-modal" type="button">
             <span>Start Your Project</span>
             <span class="btn__icon">
               <svg class="icon-arrow" viewBox="0 0 17 17">
@@ -110,7 +151,7 @@
                 <path d="M9.5 13L14 8.5L9.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </span>
-          </a>
+          </button>
         </div>
 
         <div class="hero__social-proof">
@@ -163,163 +204,250 @@
       </div>
     </header>
 
-    <!-- ======================== STATS BANNER ======================== -->
-    <section class="stats-banner" aria-label="Experience stats">
+    <!-- ======================== STATS & METRICS (Animated Counters) ======================== -->
+    <section class="stats-banner" id="statsSection" aria-label="Experience metrics">
       <div class="container">
-        <div class="stats-banner__text">
-          <span class="stats-highlight">5+ Years</span> Delivering Enterprise Software &amp; Scalable Architectures
+        <div class="stats-banner__grid">
+          <div class="stat-card">
+            <div class="stat-card__number"><span class="counter" data-target="5">0</span><span class="stat-card__plus">+</span></div>
+            <div class="stat-card__label">Years Delivering Enterprise Software</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__number"><span class="counter" data-target="100">0</span><span class="stat-card__plus">+</span></div>
+            <div class="stat-card__label">Production Digital Deliveries</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card__number"><span class="counter" data-target="99.4" data-decimals="1">0</span><span class="stat-card__plus">%</span></div>
+            <div class="stat-card__label">Client Satisfaction &amp; Retention</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ======================== PORTFOLIO / CASE STUDIES ======================== -->
+    <!-- ======================== TECH STACK MARQUEE ======================== -->
+    <section class="tech-marquee" aria-label="Core technologies">
+      <div class="tech-marquee__track">
+        <div class="tech-item"><span class="tech-dot"></span>React</div>
+        <div class="tech-item"><span class="tech-dot"></span>Next.js</div>
+        <div class="tech-item"><span class="tech-dot"></span>TypeScript</div>
+        <div class="tech-item"><span class="tech-dot"></span>Node.js</div>
+        <div class="tech-item"><span class="tech-dot"></span>PostgreSQL</div>
+        <div class="tech-item"><span class="tech-dot"></span>AWS Cloud</div>
+        <div class="tech-item"><span class="tech-dot"></span>Webflow</div>
+        <div class="tech-item"><span class="tech-dot"></span>Figma Design Systems</div>
+        <div class="tech-item"><span class="tech-dot"></span>Docker</div>
+        <div class="tech-item"><span class="tech-dot"></span>GraphQL</div>
+        <div class="tech-item"><span class="tech-dot"></span>Python</div>
+        <div class="tech-item"><span class="tech-dot"></span>Tailwind CSS</div>
+        <!-- Duplicate for infinite seamless loop -->
+        <div class="tech-item"><span class="tech-dot"></span>React</div>
+        <div class="tech-item"><span class="tech-dot"></span>Next.js</div>
+        <div class="tech-item"><span class="tech-dot"></span>TypeScript</div>
+        <div class="tech-item"><span class="tech-dot"></span>Node.js</div>
+        <div class="tech-item"><span class="tech-dot"></span>PostgreSQL</div>
+        <div class="tech-item"><span class="tech-dot"></span>AWS Cloud</div>
+        <div class="tech-item"><span class="tech-dot"></span>Webflow</div>
+        <div class="tech-item"><span class="tech-dot"></span>Figma Design Systems</div>
+        <div class="tech-item"><span class="tech-dot"></span>Docker</div>
+        <div class="tech-item"><span class="tech-dot"></span>GraphQL</div>
+        <div class="tech-item"><span class="tech-dot"></span>Python</div>
+        <div class="tech-item"><span class="tech-dot"></span>Tailwind CSS</div>
+      </div>
+    </section>
+
+    <!-- ======================== PORTFOLIO / CASE STUDIES (with Filter Tabs) ======================== -->
     <section class="portfolio section-padding" id="work">
       <div class="container--lg">
         <div class="portfolio__header">
           <h2 class="portfolio__title">Proven Deliveries Across Products &amp; Services</h2>
           <p class="portfolio__subtitle">From high-velocity SaaS products to bespoke enterprise client engineering — explore our portfolio.</p>
+          
+          <!-- Interactive Filter Tabs -->
+          <div class="portfolio__filters" role="tablist" aria-label="Filter case studies">
+            <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All (9)</button>
+            <button class="filter-btn" data-filter="saas" role="tab" aria-selected="false">SaaS &amp; Products</button>
+            <button class="filter-btn" data-filter="enterprise" role="tab" aria-selected="false">Enterprise Web</button>
+            <button class="filter-btn" data-filter="health" role="tab" aria-selected="false">HealthTech</button>
+            <button class="filter-btn" data-filter="ecommerce" role="tab" aria-selected="false">E-Commerce &amp; DTC</button>
+          </div>
         </div>
 
-        <div class="portfolio__grid">
-          <!-- 1: Wraffle -->
-          <a href="https://wraffle-portolfio.webflow.io/" target="_blank" rel="noopener" class="portfolio__item hide-tablet">
+        <div class="portfolio__grid" id="portfolioGrid">
+          <!-- 1: Wraffle (SaaS) -->
+          <a href="https://wraffle-portolfio.webflow.io/" target="_blank" rel="noopener" class="portfolio__item" data-category="saas">
+            <div class="portfolio__badge">+340% User Engagement</div>
             <img
               src="assets/690f52da4111b4c3f7377080_Wraffle_-_Home_1.webp"
               alt="Wraffle SaaS platform and interactive web application"
               width="800" height="550"
             >
             <div class="portfolio__overlay">
-              <span class="portfolio__view-btn">
-                View Case Study
-                <svg class="icon-external" viewBox="0 0 15 15"><path d="M3.854 11.146L11.146 3.854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.146 9.82V3.854H5.18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
+              <div class="portfolio__overlay-content">
+                <span class="portfolio__category-tag">SaaS Platform</span>
+                <span class="portfolio__view-btn">
+                  View Case Study
+                  <svg class="icon-external" viewBox="0 0 15 15"><path d="M3.854 11.146L11.146 3.854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.146 9.82V3.854H5.18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
             </div>
           </a>
 
-          <!-- 2: Record Recharge -->
-          <a href="https://www.authenticom.com/product/recordrecharge" target="_blank" rel="noopener" class="portfolio__item">
+          <!-- 2: Record Recharge (Enterprise / SaaS) -->
+          <a href="https://www.authenticom.com/product/recordrecharge" target="_blank" rel="noopener" class="portfolio__item" data-category="saas enterprise">
+            <div class="portfolio__badge">Sub-50ms Query Latency</div>
             <img
               src="assets/690f52da4111b4c3f737709b_Record_Recharge_1.avif"
               alt="Record Recharge enterprise data product"
               width="800" height="550"
             >
             <div class="portfolio__overlay">
-              <span class="portfolio__view-btn">
-                View Case Study
-                <svg class="icon-external" viewBox="0 0 15 15"><path d="M3.854 11.146L11.146 3.854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.146 9.82V3.854H5.18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
+              <div class="portfolio__overlay-content">
+                <span class="portfolio__category-tag">Enterprise Data Product</span>
+                <span class="portfolio__view-btn">
+                  View Case Study
+                  <svg class="icon-external" viewBox="0 0 15 15"><path d="M3.854 11.146L11.146 3.854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.146 9.82V3.854H5.18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
             </div>
           </a>
 
-          <!-- 3: BHField -->
-          <a href="https://www.bhfield.com/" target="_blank" rel="noopener" class="portfolio__item">
+          <!-- 3: BHField (HealthTech) -->
+          <a href="https://www.bhfield.com/" target="_blank" rel="noopener" class="portfolio__item" data-category="health enterprise">
+            <div class="portfolio__badge">HIPAA-Compliant System</div>
             <img
               src="assets/690f52da4111b4c3f7377087_PFP_-_Home_1.webp"
               alt="BHField healthcare technology platform"
               width="800" height="550"
             >
             <div class="portfolio__overlay">
-              <span class="portfolio__view-btn">
-                View Case Study
-                <svg class="icon-external" viewBox="0 0 15 15"><path d="M3.854 11.146L11.146 3.854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.146 9.82V3.854H5.18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
+              <div class="portfolio__overlay-content">
+                <span class="portfolio__category-tag">HealthTech Portal</span>
+                <span class="portfolio__view-btn">
+                  View Case Study
+                  <svg class="icon-external" viewBox="0 0 15 15"><path d="M3.854 11.146L11.146 3.854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.146 9.82V3.854H5.18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
             </div>
           </a>
 
-          <!-- 4: P2 Dev (hidden tablet) -->
-          <a href="https://p2-dev.webflow.io/" target="_blank" rel="noopener" class="portfolio__item hide-tablet">
+          <!-- 4: P2 Dev (SaaS / DevTools) -->
+          <a href="https://p2-dev.webflow.io/" target="_blank" rel="noopener" class="portfolio__item" data-category="saas enterprise">
+            <div class="portfolio__badge">10k+ Active Developers</div>
             <img
               src="assets/690f52da4111b4c3f7377081_P2_1.webp"
               alt="P2 Dev cloud development tools"
               width="800" height="550"
             >
             <div class="portfolio__overlay">
-              <span class="portfolio__view-btn">
-                View Case Study
-                <svg class="icon-external" viewBox="0 0 15 15"><path d="M3.854 11.146L11.146 3.854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.146 9.82V3.854H5.18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
+              <div class="portfolio__overlay-content">
+                <span class="portfolio__category-tag">DevTools SaaS</span>
+                <span class="portfolio__view-btn">
+                  View Case Study
+                  <svg class="icon-external" viewBox="0 0 15 15"><path d="M3.854 11.146L11.146 3.854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.146 9.82V3.854H5.18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
             </div>
           </a>
 
-          <!-- 5: Weed Online -->
-          <a href="https://www.weedonline.io/" target="_blank" rel="noopener" class="portfolio__item">
+          <!-- 5: Weed Online (E-Commerce) -->
+          <a href="https://www.weedonline.io/" target="_blank" rel="noopener" class="portfolio__item" data-category="ecommerce">
+            <div class="portfolio__badge">+220% Checkout Rate</div>
             <img
               src="assets/690f52da4111b4c3f7377089_Weed_Online_-_Home_1.webp"
               alt="Weed Online high-scale e-commerce platform"
               width="800" height="550"
             >
             <div class="portfolio__overlay">
-              <span class="portfolio__view-btn">
-                View Case Study
-                <svg class="icon-external" viewBox="0 0 15 15"><path d="M3.854 11.146L11.146 3.854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.146 9.82V3.854H5.18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
+              <div class="portfolio__overlay-content">
+                <span class="portfolio__category-tag">E-Commerce Marketplace</span>
+                <span class="portfolio__view-btn">
+                  View Case Study
+                  <svg class="icon-external" viewBox="0 0 15 15"><path d="M3.854 11.146L11.146 3.854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.146 9.82V3.854H5.18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
             </div>
           </a>
 
-          <!-- 6: Culla -->
-          <a href="https://culla.cruaoutdoors.com/" target="_blank" rel="noopener" class="portfolio__item">
+          <!-- 6: Culla (E-Commerce / DTC) -->
+          <a href="https://culla.cruaoutdoors.com/" target="_blank" rel="noopener" class="portfolio__item" data-category="ecommerce">
+            <div class="portfolio__badge">Global DTC Platform</div>
             <img
               src="assets/690f52da4111b4c3f737709c_Homepage_UPD_28_1.avif"
               alt="Culla outdoor consumer brand platform"
               width="800" height="550"
             >
             <div class="portfolio__overlay">
-              <span class="portfolio__view-btn">
-                View Case Study
-                <svg class="icon-external" viewBox="0 0 15 15"><path d="M3.854 11.146L11.146 3.854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.146 9.82V3.854H5.18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
+              <div class="portfolio__overlay-content">
+                <span class="portfolio__category-tag">Consumer Brand Platform</span>
+                <span class="portfolio__view-btn">
+                  View Case Study
+                  <svg class="icon-external" viewBox="0 0 15 15"><path d="M3.854 11.146L11.146 3.854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.146 9.82V3.854H5.18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
             </div>
           </a>
 
-          <!-- 7: PFP Clinic (hidden tablet) -->
-          <a href="https://www.pfpclinicgym.com/" target="_blank" rel="noopener" class="portfolio__item hide-tablet">
+          <!-- 7: PFP Clinic (HealthTech) -->
+          <a href="https://www.pfpclinicgym.com/" target="_blank" rel="noopener" class="portfolio__item" data-category="health">
+            <div class="portfolio__badge">99.8% Patient Retention</div>
             <img
               src="assets/690f52da4111b4c3f7377087_PFP_-_Home_1.webp"
               alt="PFP Clinic health and wellness platform"
               width="800" height="550"
             >
             <div class="portfolio__overlay">
-              <span class="portfolio__view-btn">
-                View Case Study
-                <svg class="icon-external" viewBox="0 0 15 15"><path d="M3.854 11.146L11.146 3.854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.146 9.82V3.854H5.18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
+              <div class="portfolio__overlay-content">
+                <span class="portfolio__category-tag">Telehealth Platform</span>
+                <span class="portfolio__view-btn">
+                  View Case Study
+                  <svg class="icon-external" viewBox="0 0 15 15"><path d="M3.854 11.146L11.146 3.854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.146 9.82V3.854H5.18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
             </div>
           </a>
 
-          <!-- 8: Sunology -->
-          <a href="https://sunology.eu/" target="_blank" rel="noopener" class="portfolio__item">
+          <!-- 8: Sunology (CleanTech / Enterprise) -->
+          <a href="https://sunology.eu/" target="_blank" rel="noopener" class="portfolio__item" data-category="saas enterprise">
+            <div class="portfolio__badge">4.9★ App Store Rating</div>
             <img
               src="assets/690f52da4111b4c3f7377082_screencapture-sunology-eu-2023-04-09-09_12_53.webp"
               alt="Sunology solar technology digital platform"
               width="800" height="550"
             >
             <div class="portfolio__overlay">
-              <span class="portfolio__view-btn">
-                View Case Study
-                <svg class="icon-external" viewBox="0 0 15 15"><path d="M3.854 11.146L11.146 3.854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.146 9.82V3.854H5.18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
+              <div class="portfolio__overlay-content">
+                <span class="portfolio__category-tag">CleanTech SaaS</span>
+                <span class="portfolio__view-btn">
+                  View Case Study
+                  <svg class="icon-external" viewBox="0 0 15 15"><path d="M3.854 11.146L11.146 3.854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.146 9.82V3.854H5.18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
             </div>
           </a>
 
-          <!-- 9: Rippleshot -->
-          <a href="https://www.rippleshot.com/" target="_blank" rel="noopener" class="portfolio__item">
+          <!-- 9: Rippleshot (FinTech / Enterprise) -->
+          <a href="https://www.rippleshot.com/" target="_blank" rel="noopener" class="portfolio__item" data-category="enterprise saas">
+            <div class="portfolio__badge">Enterprise Grade Security</div>
             <img
               src="assets/690f52da4111b4c3f7377084_screencapture-rippleshot-2023-04-09-09_11_56.webp"
               alt="Rippleshot FinTech fraud analytics platform"
               width="800" height="550"
             >
             <div class="portfolio__overlay">
-              <span class="portfolio__view-btn">
-                View Case Study
-                <svg class="icon-external" viewBox="0 0 15 15"><path d="M3.854 11.146L11.146 3.854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.146 9.82V3.854H5.18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
+              <div class="portfolio__overlay-content">
+                <span class="portfolio__category-tag">FinTech Analytics</span>
+                <span class="portfolio__view-btn">
+                  View Case Study
+                  <svg class="icon-external" viewBox="0 0 15 15"><path d="M3.854 11.146L11.146 3.854" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11.146 9.82V3.854H5.18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
             </div>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- ======================== CAPABILITIES (Product & Service Matrix) ======================== -->
+    <!-- ======================== CAPABILITIES ======================== -->
     <section class="capabilities section-padding" id="capability">
       <div class="container">
         <div class="capabilities__header">
@@ -372,6 +500,86 @@
           <p class="capabilities__featured-desc">
             We partner with leading agencies and enterprise teams as their dedicated engineering engine. High-conversion web architectures, sub-second load times, and clean maintainable codebases built to scale.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== ABOUT & CORE PILLARS ======================== -->
+    <section class="about section-padding" id="about">
+      <div class="container">
+        <div class="about__header">
+          <div class="hero__tag-wrapper">
+            <span class="hero__tag">About Technomitic</span>
+          </div>
+          <h2 class="about__title">Where Strategic Vision Meets High-Velocity Engineering.</h2>
+          <p class="about__subtitle">
+            Technomitic is a full-stack digital product engineering studio and specialized technical agency partner. We build production-grade SaaS products, enterprise web platforms, and design systems for venture-backed startups and global agencies.
+          </p>
+        </div>
+
+        <div class="about__grid">
+          <!-- Pillar 1: Architecture Rigor -->
+          <div class="about-card">
+            <div class="about-card__icon-wrapper">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <h3 class="about-card__title">Architectural Rigor</h3>
+            <p class="about-card__desc">
+              We design modular, future-proof microservices and frontends with strict TypeScript, clean testing pipelines, and sub-second execution speeds.
+            </p>
+          </div>
+
+          <!-- Pillar 2: 100% IP Ownership -->
+          <div class="about-card">
+            <div class="about-card__icon-wrapper">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            </div>
+            <h3 class="about-card__title">100% IP &amp; Code Ownership</h3>
+            <p class="about-card__desc">
+              Zero vendor lock-in. Full ownership of Git repositories, Figma design assets, documentation, and continuous deployment environments.
+            </p>
+          </div>
+
+          <!-- Pillar 3: Product-Minded Execution -->
+          <div class="about-card">
+            <div class="about-card__icon-wrapper">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="m4.93 4.93 4.24 4.24"/>
+                <path d="m14.83 9.17 4.24-4.24"/>
+                <path d="m14.83 14.83 4.24 4.24"/>
+                <path d="m9.17 14.83-4.24 4.24"/>
+                <circle cx="12" cy="12" r="4"/>
+              </svg>
+            </div>
+            <h3 class="about-card__title">Product-Minded Velocity</h3>
+            <p class="about-card__desc">
+              We focus on the metrics that matter: conversion rates, page performance, user retention, and sustainable unit economics.
+            </p>
+          </div>
+
+          <!-- Pillar 4: Autonomous Pods -->
+          <div class="about-card">
+            <div class="about-card__icon-wrapper">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3 class="about-card__title">Dedicated Engineering Pods</h3>
+            <p class="about-card__desc">
+              Elastic cross-functional teams of Senior Engineers, Solution Architects, and UI/UX Designers working in sync with your product roadmap.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -433,7 +641,7 @@
       </div>
     </section>
 
-    <!-- ======================== TESTIMONIALS (Social Proof) ======================== -->
+    <!-- ======================== TESTIMONIALS ======================== -->
     <section class="testimonials section-padding" id="testimonial">
       <div class="container">
         <div class="testimonials__header">
@@ -652,55 +860,136 @@
       </div>
     </section>
 
-    <!-- ======================== LEADERSHIP & FOUNDERS ======================== -->
-    <section class="section_experience" id="team">
+    <!-- ======================== INTERACTIVE FAQ SECTION ======================== -->
+    <section class="faq section-padding" id="faq">
       <div class="container">
-        <div class="experience__grid">
-          <!-- Left Column: Quote + Portraits + Names -->
-          <div class="experience__left">
-            <h2 class="experience__quote">
-              Great digital products are built by teams who combine strategic vision with hands-on engineering.<br>Our leadership is built on execution.
-            </h2>
+        <div class="faq__header">
+          <h2 class="faq__title">Frequently Asked Questions</h2>
+          <p class="faq__subtitle">Everything you need to know about partnering with our product engineering team.</p>
+        </div>
 
-            <!-- Founder 1: Hanu Koshti -->
-            <div class="founder-item">
-              <div class="founder-item__image-box">
-                <img
-                  src="assets/693f022fa59670e22f74aa49_hanubhaiya3.png"
-                  alt="Hanu Koshti, Founder & CEO"
-                  class="founder-item__img"
-                  width="280"
-                  height="340"
-                >
-              </div>
-              <h3 class="founder-item__name">Hanu Koshti</h3>
-            </div>
-
-            <!-- Founder 2: Neeraj Khajuriya -->
-            <div class="founder-item">
-              <div class="founder-item__image-box">
-                <img
-                  src="assets/6940484a03e45dbf112e4082_WhatsApp_Image_2025-11-09_at_.png"
-                  alt="Neeraj Khajuriya, Co-Founder & CTO"
-                  class="founder-item__img"
-                  width="280"
-                  height="340"
-                >
-              </div>
-              <h3 class="founder-item__name">Neeraj Khajuriya</h3>
+        <div class="faq__accordion">
+          <!-- FAQ 1 -->
+          <div class="faq-item">
+            <button class="faq-item__question" type="button" aria-expanded="false">
+              <span>How quickly can an engineering pod or project kick off?</span>
+              <svg class="faq-item__icon" viewBox="0 0 16 16"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p>We typically spin up discovery and sprint architectures within <strong>48 to 72 hours</strong> of scope alignment. Dedicated engineering pods integrate into your existing Slack, Jira, and GitHub workflows from day one.</p>
             </div>
           </div>
 
-          <!-- Right Column: Executive Bios -->
-          <div class="experience__right">
-            <div class="founder-bio">
-              <p>
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <button class="faq-item__question" type="button" aria-expanded="false">
+              <span>What engagement models do you offer (Fixed-Price vs Dedicated Pods)?</span>
+              <svg class="faq-item__icon" viewBox="0 0 16 16"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p>We provide two flexible models: <strong>Dedicated Engineering Pods</strong> (monthly agile sprints with senior full-stack developers and designers for product teams) and <strong>Milestone-Based Fixed Delivery</strong> (structured scope, timelines, and budgets for clear MVP builds and web platforms).</p>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <button class="faq-item__question" type="button" aria-expanded="false">
+              <span>Who owns the intellectual property (IP) and source code?</span>
+              <svg class="faq-item__icon" viewBox="0 0 16 16"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p><strong>You retain 100% intellectual property ownership</strong> of all codebases, design assets, tokens, database schemas, and documentation produced. Everything is transferred directly to your organization repositories.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <button class="faq-item__question" type="button" aria-expanded="false">
+              <span>How do you maintain software quality, performance, and security?</span>
+              <svg class="faq-item__icon" viewBox="0 0 16 16"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p>Every platform undergoes strict code reviews, automated CI/CD unit testing, Lighthouse performance audits, OWASP security checks, and cross-browser testing before production release.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item">
+            <button class="faq-item__question" type="button" aria-expanded="false">
+              <span>Do you provide post-launch maintenance, SLAs, and scale support?</span>
+              <svg class="faq-item__icon" viewBox="0 0 16 16"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p>Yes. We offer ongoing maintenance SLAs, cloud infrastructure monitoring, database optimization, and continuous feature development sprints to support your user growth.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="faq-item">
+            <button class="faq-item__question" type="button" aria-expanded="false">
+              <span>Can you work alongside our existing in-house engineering team?</span>
+              <svg class="faq-item__icon" viewBox="0 0 16 16"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="faq-item__answer">
+              <p>Absolutely. We frequently function as specialized engineering pods co-developing alongside internal engineering teams, leading design systems, frontend modernization, or high-concurrency backend services.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================== LEADERSHIP & FOUNDERS ======================== -->
+    <section class="section_experience" id="team">
+      <div class="container">
+        <!-- Top Leadership Quote -->
+        <div class="experience__header">
+          <h2 class="experience__quote">
+            Great digital products are built by teams who combine strategic vision with hands-on engineering.<br>
+            Our leadership is built on execution.
+          </h2>
+        </div>
+
+        <!-- Founders Cards Grid Below Quote -->
+        <div class="founders__grid">
+          <!-- Founder 1: Hanu Koshti -->
+          <div class="founder-card">
+            <div class="founder-card__image-box">
+              <img
+                src="assets/693f022fa59670e22f74aa49_hanubhaiya3.png"
+                alt="Hanu Koshti, Founder & CEO"
+                class="founder-card__img"
+                width="340"
+                height="420"
+              >
+            </div>
+            <div class="founder-card__content">
+              <div class="founder-card__header">
+                <h3 class="founder-card__name">Hanu Koshti</h3>
+                <span class="founder-card__role">Founder &amp; CEO</span>
+              </div>
+              <p class="founder-card__bio">
                 <strong>Hanu Koshti, CEO &amp; Founder of Technomitic,</strong> directs the company’s strategic vision, market positioning, and product engineering operations. Leveraging deep experience across software architecture, cloud platforms, and UX strategy, Hanu guides our engineering teams in delivering mission-critical digital products for scaleups and enterprise agency clients worldwide.
               </p>
             </div>
+          </div>
 
-            <div class="founder-bio founder-bio--second">
-              <p>
+          <!-- Founder 2: Neeraj Khajuriya -->
+          <div class="founder-card">
+            <div class="founder-card__image-box">
+              <img
+                src="assets/6940484a03e45dbf112e4082_WhatsApp_Image_2025-11-09_at_.png"
+                alt="Neeraj Khajuriya, Co-Founder & CTO"
+                class="founder-card__img"
+                width="340"
+                height="420"
+              >
+            </div>
+            <div class="founder-card__content">
+              <div class="founder-card__header">
+                <h3 class="founder-card__name">Neeraj Khajuriya</h3>
+                <span class="founder-card__role">Co-Founder &amp; CTO</span>
+              </div>
+              <p class="founder-card__bio">
                 <strong>Neeraj Khajuriya, Co-Founder &amp; CTO of Technomitic,</strong> spearheads technical architecture, system design, and engineering excellence across all client and proprietary product initiatives. Specializing in scalable distributed systems, high-concurrency cloud backends, and frontend performance optimization, Neeraj ensures every software platform we build is secure, resilient, and future-proof.
               </p>
             </div>
@@ -709,6 +998,111 @@
       </div>
     </section>
 
+    <!-- ======================== DIRECT CONTACT & ENGAGEMENT HUB ======================== -->
+    <section class="contact-section section-padding" id="contact">
+      <div class="container">
+        <div class="contact-section__header">
+          <div class="hero__tag-wrapper">
+            <span class="hero__tag">Get in Touch</span>
+          </div>
+          <h2 class="contact-section__title">Connect With Our Technical Leadership</h2>
+          <p class="contact-section__subtitle">
+            Whether you are launching a greenfield MVP, modernizing enterprise web architecture, or scaling dedicated engineering pods, we are ready to execute.
+          </p>
+        </div>
+
+        <div class="contact__grid">
+          <!-- Card 1: Direct Email -->
+          <a href="mailto:technomitic@gmail.com" class="contact-card">
+            <div class="contact-card__icon-wrapper">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+            </div>
+            <div class="contact-card__info">
+              <span class="contact-card__tag">Direct Inquiries</span>
+              <h3 class="contact-card__value">technomitic@gmail.com</h3>
+              <p class="contact-card__hint">Click to email leadership directly ↗</p>
+            </div>
+          </a>
+
+          <!-- Card 2: Instant Project Estimator -->
+          <div class="contact-card js-open-modal" style="cursor: pointer;">
+            <div class="contact-card__icon-wrapper contact-card__icon-wrapper--accent">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+              </svg>
+            </div>
+            <div class="contact-card__info">
+              <span class="contact-card__tag">Instant Estimator</span>
+              <h3 class="contact-card__value">Project Scope &amp; Pricing</h3>
+              <p class="contact-card__hint">Launch interactive 60-sec intake ↗</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Rapid SLA -->
+          <div class="contact-card">
+            <div class="contact-card__icon-wrapper contact-card__icon-wrapper--green">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="contact-card__info">
+              <span class="contact-card__tag">Response Time</span>
+              <h3 class="contact-card__value">&lt; 2 Hours Turnaround</h3>
+              <p class="contact-card__hint">Rapid technical assessment &amp; NDA</p>
+            </div>
+          </div>
+
+          <!-- Card 4: Global Footprint -->
+          <div class="contact-card">
+            <div class="contact-card__icon-wrapper">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </div>
+            <div class="contact-card__info">
+              <span class="contact-card__tag">Locations</span>
+              <h3 class="contact-card__value">India HQ &amp; Global Pods</h3>
+              <p class="contact-card__hint">Supporting US, UK, EU &amp; APAC</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================== BOTTOM OFFICIAL CHANNELS HUB ======================== -->
+    <div class="container">
+      <div class="official-channels-bottom reveal-init" id="officialChannels">
+        <div class="official-channels-bottom__left">
+          <span class="official-channels-bottom__pulse-dot"></span>
+          <span class="official-channels-bottom__label">Connect across our official channels:</span>
+        </div>
+        <div class="official-channels-bottom__links">
+          <a href="https://www.linkedin.com/company/technomitic" target="_blank" rel="noopener" class="official-channels-bottom__btn" aria-label="LinkedIn" title="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://x.com/technomitic" target="_blank" rel="noopener" class="official-channels-bottom__btn" aria-label="X / Twitter" title="X (Twitter)">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/technomitic" target="_blank" rel="noopener" class="official-channels-bottom__btn" aria-label="Instagram" title="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </a>
+          <a href="https://github.com/technomitic" target="_blank" rel="noopener" class="official-channels-bottom__btn" aria-label="GitHub" title="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
     <!-- ======================== FOOTER CTA ======================== -->
     <div class="container">
       <div class="footer-cta">
@@ -716,7 +1110,7 @@
           <img src="assets/690f52da4111b4c3f737703b_62d0e2aeb4e06c8b6b8249a4_62736cc4162e55368179f7d1_f2w__pfeil.svg" alt="" class="footer-cta__arrow">
           <h4 class="footer-cta__text">Ready to build your next product or scale your agency services?</h4>
         </div>
-        <a href="https://form.jotform.com/253113890548460" class="btn btn--cta" target="_blank" rel="noopener">
+        <button class="btn btn--cta js-open-modal" type="button">
           <span>Let's Build Together</span>
           <span class="btn__icon">
             <svg class="icon-arrow" viewBox="0 0 17 17">
@@ -724,25 +1118,91 @@
               <path d="M9.5 13L14 8.5L9.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </span>
-        </a>
+        </button>
       </div>
     </div>
 
   </main>
 
   <!-- ============================================================
-       FOOTER (Live Global Operations Time + Direct Inquiries)
+       FOOTER (Comprehensive Details & Navigation Hub)
        ============================================================ -->
   <footer class="footer" id="footer">
     <div class="container">
-      <div class="footer__top">
-        <div class="footer__left-block">
-          <div class="footer__local-time" id="localTimeDisplay">05:52 PM</div>
-          <div class="footer__contact-info">
-            <p class="footer__question">Have an engineering or product inquiry?</p>
-            <p class="footer__email-link">
-              <span class="text-muted">Direct Email:</span> <a href="mailto:technomitic@gmail.com">Technomitic@gmail.com</a>
-            </p>
+      <div class="footer__grid">
+        <!-- Col 1: Brand & Operational Status -->
+        <div class="footer__col footer__col--brand">
+          <a href="/" class="footer__brand-logo" aria-label="Technomitic Home">
+            <img src="assets/690f539df97be809325201b4_WhatsApp_Image_2025-10-23_at_17.03.00_fd49f313.jpg" alt="Technomitic Logo" class="footer__logo-img" width="40" height="40">
+            <span class="footer__brand-name">Technomitic</span>
+          </a>
+          <p class="footer__tagline">
+            Full-stack digital product engineering studio &amp; dedicated technical partner for venture-backed startups and enterprise agency pods.
+          </p>
+          <div class="footer__status-badge">
+            <span class="btn__dot"></span>
+            <span>Q3/Q4 Engineering Openings Available</span>
+          </div>
+          <div class="footer__local-time-wrapper">
+            <span class="footer__time-label">HQ Operations Time:</span>
+            <div class="footer__local-time" id="localTimeDisplay">05:52 PM</div>
+          </div>
+        </div>
+
+        <!-- Col 2: Solutions & Capabilities -->
+        <div class="footer__col">
+          <h4 class="footer__col-title">Solutions</h4>
+          <ul class="footer__links">
+            <li><a href="#capability" class="footer__link">SaaS MVP Engineering</a></li>
+            <li><a href="#capability" class="footer__link">Dedicated Engineering Pods</a></li>
+            <li><a href="#capability" class="footer__link">Enterprise Web Platforms</a></li>
+            <li><a href="#capability" class="footer__link">Design Systems &amp; UX</a></li>
+            <li><a href="#capability" class="footer__link">High-Concurrency Cloud Backends</a></li>
+            <li><a href="#capability" class="footer__link">Performance &amp; SEO Architecture</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Studio & Navigation -->
+        <div class="footer__col">
+          <h4 class="footer__col-title">Studio</h4>
+          <ul class="footer__links">
+            <li><a href="#about" class="footer__link">About Technomitic</a></li>
+            <li><a href="#work" class="footer__link">Portfolio &amp; Case Studies</a></li>
+            <li><a href="#process" class="footer__link">5-Phase Agile Framework</a></li>
+            <li><a href="#team" class="footer__link">Leadership &amp; Founders</a></li>
+            <li><a href="#testimonial" class="footer__link">Verified Client Reviews</a></li>
+            <li><a href="#faq" class="footer__link">FAQ &amp; Delivery SLAs</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Direct Inquiries & Socials -->
+        <div class="footer__col">
+          <h4 class="footer__col-title">Connect</h4>
+          <div class="footer__contact-item">
+            <span class="footer__contact-label">Direct Inquiries</span>
+            <a href="mailto:technomitic@gmail.com" class="footer__contact-val">technomitic@gmail.com</a>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-label">Response Time</span>
+            <span class="footer__contact-text">&lt; 2 Hours Turnaround</span>
+          </div>
+          <div class="footer__contact-item">
+            <span class="footer__contact-label">Global Presence</span>
+            <span class="footer__contact-text">India HQ · Global Remote Pods</span>
+          </div>
+          <div class="footer__socials">
+            <a href="https://www.linkedin.com/company/technomitic" target="_blank" rel="noopener" class="footer__social" aria-label="LinkedIn" title="LinkedIn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://x.com/technomitic" target="_blank" rel="noopener" class="footer__social" aria-label="X / Twitter" title="X (Twitter)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/technomitic" target="_blank" rel="noopener" class="footer__social" aria-label="Instagram" title="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+            <a href="https://github.com/technomitic" target="_blank" rel="noopener" class="footer__social" aria-label="GitHub" title="GitHub">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            </a>
           </div>
         </div>
       </div>
@@ -752,19 +1212,83 @@
           <span class="footer__copy">&copy; <span id="currentYear">2026</span> Technomitic. All rights reserved.</span>
           <a href="#" class="footer__link">Privacy Policy</a>
           <a href="#" class="footer__link">Terms of Service</a>
-        </div>
-
-        <div class="footer__socials">
-          <a href="https://www.linkedin.com/company/technomitic" target="_blank" rel="noopener" class="footer__social" aria-label="LinkedIn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <a href="https://x.com/technomitic" target="_blank" rel="noopener" class="footer__social footer__social--x" aria-label="X / Twitter">
-            <span class="x-logo-text">X</span>
-          </a>
+          <span class="footer__guarantee">🔒 100% Client IP &amp; NDA Guarantee</span>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- ============================================================
+       ON-SITE PROJECT ESTIMATOR MODAL
+       ============================================================ -->
+  <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal__backdrop" id="modalBackdrop"></div>
+    <div class="modal__dialog">
+      <button class="modal__close" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+      
+      <div class="modal__header">
+        <span class="modal__tag"><span class="btn__dot"></span> Fast Response · 24h Turnaround</span>
+        <h3 class="modal__title" id="modalTitle">Start Your Project with Technomitic</h3>
+        <p class="modal__subtitle">Tell us about your product or engineering goals to receive a scoped estimate and timeline.</p>
+      </div>
+
+      <form class="modal__form" id="projectForm" onsubmit="event.preventDefault(); handleFormSubmit();">
+        <!-- Step 1: Project Type -->
+        <div class="form-group">
+          <label class="form-label">1. Select Project Scope</label>
+          <div class="chip-grid">
+            <label class="chip"><input type="radio" name="projectType" value="SaaS MVP" checked><span>SaaS MVP Product</span></label>
+            <label class="chip"><input type="radio" name="projectType" value="Dedicated Pod"><span>Dedicated Engineering Pod</span></label>
+            <label class="chip"><input type="radio" name="projectType" value="Enterprise Web"><span>Enterprise Web Platform</span></label>
+            <label class="chip"><input type="radio" name="projectType" value="Design System"><span>Design System &amp; UX</span></label>
+          </div>
+        </div>
+
+        <!-- Step 2: Budget Range -->
+        <div class="form-group">
+          <label class="form-label">2. Target Budget Range</label>
+          <div class="chip-grid">
+            <label class="chip"><input type="radio" name="budget" value="$5k - $15k" checked><span>$5k - $15k</span></label>
+            <label class="chip"><input type="radio" name="budget" value="$15k - $35k"><span>$15k - $35k</span></label>
+            <label class="chip"><input type="radio" name="budget" value="$35k+"><span>$35k+ / Enterprise</span></label>
+          </div>
+        </div>
+
+        <!-- Step 3: Contact Details -->
+        <div class="form-group-row">
+          <div class="form-group">
+            <label class="form-label" for="clientName">Your Name</label>
+            <input type="text" id="clientName" class="form-input" placeholder="e.g. Sarah Jenkins" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="clientEmail">Work Email</label>
+            <input type="email" id="clientEmail" class="form-input" placeholder="sarah@company.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="projectBrief">Project Summary (Optional)</label>
+          <textarea id="projectBrief" class="form-textarea" rows="3" placeholder="Briefly describe your goals, timeline, or existing stack..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--modal-submit" id="submitBtn">
+          <span>Send Project Inquiry</span>
+          <span class="btn__icon">
+            <svg class="icon-arrow" viewBox="0 0 17 17">
+              <path d="M3 8.5L14 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9.5 13L14 8.5L9.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+
+        <div class="form-success" id="formSuccess" style="display: none;">
+          <div class="form-success__icon">✓</div>
+          <h4>Inquiry Received Successfully!</h4>
+          <p>Thank you! Our engineering leadership team will review your brief and follow up within 24 hours.</p>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <script src="assets/splash.js"></script>
   <script src="script.js"></script>

@@ -1,14 +1,14 @@
 /* ============================================================
-   TECHNOMITIC — Interactive Features & Mouse Animations
-   WebGL Fluid + 3D Magnetic Card Tilt + Custom Cursor + Scroll Reveal
-   60 FPS · Zero Bloat
+   TECHNOMITIC — Interactive Features & Application Logic
+   Clean Dynamic Cursor · Portfolio Filter · Animated Counters
+   Interactive FAQ · On-Site Project Estimator Modal · 60 FPS
    ============================================================ */
 
 (function () {
   'use strict';
 
   // ============================================================
-  // 1. CUSTOM CURSOR & MAGNETIC HOVER
+  // 1. SIMPLE & MINIMAL DYNAMIC CURSOR (No Text)
   // ============================================================
   const cursorDot = document.getElementById('cursorDot');
   const cursorRing = document.getElementById('cursorRing');
@@ -16,86 +16,331 @@
   if (cursorDot && cursorRing && window.innerWidth >= 992) {
     let mouseX = -100, mouseY = -100;
     let ringX = -100, ringY = -100;
+    let prevMouseX = -100, prevMouseY = -100;
     let isMoving = false;
+    let stopTimeout = null;
+    let currentMode = '';
 
     window.addEventListener('mousemove', function (e) {
       mouseX = e.clientX;
       mouseY = e.clientY;
+
       if (!isMoving) {
         isMoving = true;
         cursorDot.style.opacity = '1';
         cursorRing.style.opacity = '1';
       }
+
+      const deltaX = mouseX - prevMouseX;
+      const deltaY = mouseY - prevMouseY;
+      const speed = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+      prevMouseX = mouseX;
+      prevMouseY = mouseY;
+
+      if (speed > 1.5 && !currentMode) {
+        cursorRing.classList.add('is-moving');
+        cursorDot.classList.add('is-moving');
+      }
+
+      clearTimeout(stopTimeout);
+      stopTimeout = setTimeout(function () {
+        cursorRing.classList.remove('is-moving');
+        cursorDot.classList.remove('is-moving');
+      }, 100);
+
       cursorDot.style.left = mouseX + 'px';
       cursorDot.style.top = mouseY + 'px';
     }, { passive: true });
 
     function renderCursor() {
-      ringX += (mouseX - ringX) * 0.18;
-      ringY += (mouseY - ringY) * 0.18;
+      ringX += (mouseX - ringX) * 0.2;
+      ringY += (mouseY - ringY) * 0.2;
       cursorRing.style.left = ringX + 'px';
       cursorRing.style.top = ringY + 'px';
       requestAnimationFrame(renderCursor);
     }
     requestAnimationFrame(renderCursor);
 
-    // Hover effect on interactive elements
-    const interactiveSelectors = 'a, button, .btn, .portfolio__item, .capability-card, .process__step, .founder-item, .testimonial-card';
     document.addEventListener('mouseover', function (e) {
-      if (e.target.closest(interactiveSelectors)) {
-        cursorDot.classList.add('hovering');
-        cursorRing.classList.add('hovering');
+      const target = e.target;
+
+      // 1. Buttons, CTAs, Modal Chips & Inputs
+      if (target.closest('.btn, button, .navbar__hamburger, .filter-btn, .modal__close, .chip, .modal__chip, input, textarea, select')) {
+        setCursorState('cursor--btn');
+      }
+      // 2. Tech / Skill Chips (Neon cyan focus)
+      else if (target.closest('.tech-item')) {
+        setCursorState('cursor--chip');
+      }
+      // 3. Cards / Boxes (Portfolio, Capabilities, About, Process, Testimonials, Stats, FAQ, Team, Contact)
+      else if (target.closest('.portfolio__item, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .footer-cta, .faq-item, .stat-card')) {
+        setCursorState('cursor--card');
+      }
+      // 4. Images & Avatars
+      else if (target.closest('.hero__avatar, .founder-card__image-box img, .capability-card__img, .process__step-icon')) {
+        setCursorState('cursor--media');
+      }
+      // 5. Navigation Links, Social Buttons & Anchors
+      else if (target.closest('a, .contact__social-icon-btn, .footer__social, .official-channels-bottom__btn')) {
+        setCursorState('cursor--link');
       }
     }, { passive: true });
 
     document.addEventListener('mouseout', function (e) {
-      if (e.target.closest(interactiveSelectors)) {
-        cursorDot.classList.remove('hovering');
-        cursorRing.classList.remove('hovering');
+      const target = e.target;
+      if (target.closest('.btn, button, .portfolio__item, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .footer-cta, .faq-item, .stat-card, .tech-item, a, img, .navbar__hamburger, .filter-btn, .modal__close, .chip, .modal__chip, input, textarea, select, .contact__social-icon-btn, .footer__social, .official-channels-bottom__btn')) {
+        resetCursorState();
       }
     }, { passive: true });
+
+    function setCursorState(className) {
+      currentMode = className;
+      cursorRing.className = 'cursor-ring ' + className;
+      cursorDot.className = 'cursor-dot ' + className;
+    }
+
+    function resetCursorState() {
+      currentMode = '';
+      cursorRing.className = 'cursor-ring';
+      cursorDot.className = 'cursor-dot';
+    }
   }
 
   // ============================================================
-  // 2. 3D CARD TILT ON MOUSE MOVE (Interactive Depth)
+  // 2. INTERACTIVE CARD SPOTLIGHT GLOW & 3D TILT
   // ============================================================
   if (window.innerWidth >= 992) {
-    const tiltCards = document.querySelectorAll('.portfolio__item, .capability-card, .process__step, .founder-item__image-box');
+    const spotlightCards = document.querySelectorAll(
+      '.portfolio__item, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .footer-cta, .stat-card, .faq-item'
+    );
 
-    tiltCards.forEach(function (card) {
+    spotlightCards.forEach(function (card) {
+      card.addEventListener('mouseenter', function () {
+        card.style.setProperty('--spotlight-opacity', '1');
+      });
+
       card.addEventListener('mousemove', function (e) {
         const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left; // x position within the element
-        const y = e.clientY - rect.top;  // y position within the element
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        card.style.setProperty('--mouse-x', x + 'px');
+        card.style.setProperty('--mouse-y', y + 'px');
 
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
+        const deltaX = (x - centerX) / centerX;
+        const deltaY = (y - centerY) / centerY;
 
-        const deltaX = (x - centerX) / centerX; // -1 to 1
-        const deltaY = (y - centerY) / centerY; // -1 to 1
+        const rotateX = (deltaY * -4.5).toFixed(2);
+        const rotateY = (deltaX * 4.5).toFixed(2);
 
-        const rotateX = deltaY * -6; // max 6deg
-        const rotateY = deltaX * 6;  // max 6deg
-
-        card.style.transform = 'perspective(800px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg) translateY(-4px)';
+        card.style.transform = 'perspective(900px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-4px)';
       });
 
       card.addEventListener('mouseleave', function () {
+        card.style.setProperty('--spotlight-opacity', '0');
         card.style.transform = '';
       });
     });
   }
 
   // ============================================================
-  // 3. NAVBAR SCROLL MORPH
+  // 3. INTERACTIVE CASE STUDY FILTER TABS
   // ============================================================
-  const navbar = document.getElementById('navbar');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const portfolioItems = document.querySelectorAll('.portfolio__item');
+
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      filterBtns.forEach(function (b) {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      const filterValue = btn.getAttribute('data-filter');
+
+      portfolioItems.forEach(function (item) {
+        const categories = item.getAttribute('data-category') || '';
+        if (filterValue === 'all' || categories.indexOf(filterValue) !== -1) {
+          item.classList.remove('is-hidden');
+          item.style.opacity = '0';
+          item.style.transform = 'scale(0.95)';
+          setTimeout(function () {
+            item.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            item.style.opacity = '1';
+            item.style.transform = 'scale(1)';
+          }, 30);
+        } else {
+          item.classList.add('is-hidden');
+        }
+      });
+    });
+  });
+
+  // ============================================================
+  // 4. ANIMATED STAT COUNTERS
+  // ============================================================
+  const statsSection = document.getElementById('statsSection');
+  let countersAnimated = false;
+
+  if (statsSection && 'IntersectionObserver' in window) {
+    const statsObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && !countersAnimated) {
+          countersAnimated = true;
+          animateCounters();
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    statsObserver.observe(statsSection);
+  } else {
+    animateCounters();
+  }
+
+  function animateCounters() {
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(function (counter) {
+      const target = parseFloat(counter.getAttribute('data-target'));
+      const decimals = parseInt(counter.getAttribute('data-decimals') || '0', 10);
+      const duration = 1800; // ms
+      const startTime = performance.now();
+
+      function updateNumber(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const easeOutProgress = 1 - Math.pow(1 - progress, 3);
+        const currentVal = easeOutProgress * target;
+
+        counter.textContent = decimals > 0 ? currentVal.toFixed(decimals) : Math.floor(currentVal);
+
+        if (progress < 1) {
+          requestAnimationFrame(updateNumber);
+        } else {
+          counter.textContent = decimals > 0 ? target.toFixed(decimals) : target;
+        }
+      }
+      requestAnimationFrame(updateNumber);
+    });
+  }
+
+  // ============================================================
+  // 5. INTERACTIVE FAQ ACCORDION
+  // ============================================================
+  const faqQuestions = document.querySelectorAll('.faq-item__question');
+  faqQuestions.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const item = btn.parentElement;
+      const answer = item.querySelector('.faq-item__answer');
+      const isOpen = item.classList.contains('is-open');
+
+      // Close other open items
+      document.querySelectorAll('.faq-item.is-open').forEach(function (openItem) {
+        if (openItem !== item) {
+          openItem.classList.remove('is-open');
+          openItem.querySelector('.faq-item__question').setAttribute('aria-expanded', 'false');
+          openItem.querySelector('.faq-item__answer').style.maxHeight = null;
+        }
+      });
+
+      // Toggle current
+      if (!isOpen) {
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      } else {
+        item.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        answer.style.maxHeight = null;
+      }
+    });
+  });
+
+  // ============================================================
+  // 6. ON-SITE PROJECT ESTIMATOR MODAL
+  // ============================================================
+  const projectModal = document.getElementById('projectModal');
+  const modalCloseBtn = document.getElementById('modalCloseBtn');
+  const modalBackdrop = document.getElementById('modalBackdrop');
+  const openModalBtns = document.querySelectorAll('.js-open-modal');
+  const projectForm = document.getElementById('projectForm');
+  const formSuccess = document.getElementById('formSuccess');
+
+  function openModal() {
+    if (!projectModal) return;
+    projectModal.classList.add('is-active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!projectModal) return;
+    projectModal.classList.remove('is-active');
+    document.body.style.overflow = '';
+  }
+
+  openModalBtns.forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+  if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && projectModal && projectModal.classList.contains('is-active')) {
+      closeModal();
+    }
+  });
+
+  window.handleFormSubmit = function () {
+    const clientName = document.getElementById('clientName').value;
+    const clientEmail = document.getElementById('clientEmail').value;
+    const projectType = document.querySelector('input[name="projectType"]:checked').value;
+    const budget = document.querySelector('input[name="budget"]:checked').value;
+    const projectBrief = document.getElementById('projectBrief').value;
+
+    const submitBtn = document.getElementById('submitBtn');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Processing Inquiry...</span>';
+    }
+
+    setTimeout(function () {
+      if (projectForm && formSuccess) {
+        projectForm.reset();
+        submitBtn.style.display = 'none';
+        formSuccess.style.display = 'block';
+        setTimeout(function () {
+          closeModal();
+          setTimeout(function () {
+            formSuccess.style.display = 'none';
+            submitBtn.style.display = 'inline-flex';
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>Send Project Inquiry</span><span class="btn__icon"><svg class="icon-arrow" viewBox="0 0 17 17"><path d="M3 8.5L14 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 13L14 8.5L9.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+          }, 400);
+        }, 3000);
+      }
+    }, 800);
+  };
+
+  // ============================================================
+  // 7. NAVBAR SCROLL MORPH
+  // ============================================================
+  const navbar = document.getElementById('navbar') || document.querySelector('.navbar');
   if (navbar) {
     let isScrolled = false;
     function handleScroll() {
-      const scrolled = window.scrollY > 80;
+      const scrolled = window.scrollY > 60;
       if (scrolled !== isScrolled) {
         isScrolled = scrolled;
+        navbar.classList.toggle('is-scrolled', isScrolled);
         navbar.classList.toggle('scrolled', isScrolled);
       }
     }
@@ -104,7 +349,7 @@
   }
 
   // ============================================================
-  // 4. DYNAMIC LOCAL TIME (UTC+5 Offset - Matching Original Site)
+  // 8. DYNAMIC LOCAL TIME (UTC+5 Offset)
   // ============================================================
   const localTimeEl = document.getElementById('localTimeDisplay');
   function updateLocalTime() {
@@ -124,14 +369,13 @@
   updateLocalTime();
   setInterval(updateLocalTime, 30000);
 
-  // Dynamic Current Year
   const yearEl = document.getElementById('currentYear');
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
 
   // ============================================================
-  // 5. MOBILE MENU
+  // 9. MOBILE MENU
   // ============================================================
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -161,7 +405,7 @@
   }
 
   // ============================================================
-  // 6. SMOOTH SCROLL FOR ANCHORS
+  // 10. SMOOTH SCROLL FOR ANCHORS
   // ============================================================
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
@@ -177,10 +421,12 @@
   });
 
   // ============================================================
-  // 7. SMOOTH SCROLL REVEAL (Intersection Observer)
+  // 11. SMOOTH SCROLL REVEAL (Intersection Observer)
   // ============================================================
   if ('IntersectionObserver' in window) {
-    const revealElements = document.querySelectorAll('.portfolio__item, .capability-card, .process__step, .testimonial-card, .founder-item');
+    const revealElements = document.querySelectorAll(
+      '.portfolio__item, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .capabilities__featured, .footer-cta, .faq-item, .stat-card, .official-channels-bottom'
+    );
 
     const observer = new IntersectionObserver(function (entries, obs) {
       entries.forEach(function (entry) {
@@ -191,7 +437,7 @@
       });
     }, {
       rootMargin: '0px 0px -40px 0px',
-      threshold: 0.1
+      threshold: 0.08
     });
 
     revealElements.forEach(function (el) {
