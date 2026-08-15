@@ -1178,8 +1178,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const touches = e.targetTouches;
     for (let i = 0; i < touches.length; i++) {
       if (i >= pointers.length) pointers.push(new pointerPrototype());
-      let posX = scaleByPixelRatio(touches[i].pageX);
-      let posY = scaleByPixelRatio(touches[i].pageY);
+      let posX = scaleByPixelRatio(touches[i].clientX);
+      let posY = scaleByPixelRatio(touches[i].clientY);
       updatePointerDownData(pointers[i], touches[i].identifier, posX, posY);
     }
   }, { passive: true });
@@ -1188,11 +1188,37 @@ document.addEventListener("DOMContentLoaded", function () {
     const touches = e.targetTouches;
     for (let i = 0; i < touches.length; i++) {
       let p = pointers[i];
-      if (p && p.down) {
-        let posX = scaleByPixelRatio(touches[i].pageX);
-        let posY = scaleByPixelRatio(touches[i].pageY);
-        updatePointerMoveData(p, posX, posY);
+      if (p) {
+        let posX = scaleByPixelRatio(touches[i].clientX);
+        let posY = scaleByPixelRatio(touches[i].clientY);
+        if (!p.down) {
+          updatePointerDownData(p, touches[i].identifier, posX, posY);
+        } else {
+          updatePointerMoveData(p, posX, posY);
+        }
       }
     }
   }, { passive: true });
+
+  window.addEventListener("touchend", (e) => {
+    const touches = e.changedTouches;
+    for (let i = 0; i < touches.length; i++) {
+      let p = pointers.find(p => p.id === touches[i].identifier);
+      if (p) updatePointerUpData(p);
+    }
+  }, { passive: true });
+
+  window.addEventListener("touchcancel", (e) => {
+    pointers.forEach(p => updatePointerUpData(p));
+  }, { passive: true });
+
+  // Ambient gentle fluid pulse on mobile so canvas is always alive
+  setInterval(() => {
+    if (document.hidden) return;
+    const color = generateColor();
+    color.r *= 3;
+    color.g *= 3;
+    color.b *= 3;
+    splat(Math.random(), Math.random(), 300 * (Math.random() - 0.5), 300 * (Math.random() - 0.5), color);
+  }, 4500);
 });

@@ -405,7 +405,7 @@
   }
 
   // ============================================================
-  // 10. SMOOTH SCROLL FOR ANCHORS
+  // 10. SMOOTH SCROLL FOR ANCHORS (With Navbar Offset)
   // ============================================================
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
@@ -414,20 +414,26 @@
         const target = document.querySelector(href);
         if (target) {
           e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const navHeight = navbar ? navbar.offsetHeight : 80;
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - (navHeight - 10);
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
         }
       }
     });
   });
 
   // ============================================================
-  // 11. SMOOTH SCROLL REVEAL (Intersection Observer)
+  // 11. ULTRA-SMOOTH SCROLL REVEAL (Intersection Observer + Mobile Optimization)
   // ============================================================
   if ('IntersectionObserver' in window) {
     const revealElements = document.querySelectorAll(
       '.portfolio__item, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .capabilities__featured, .footer-cta, .faq-item, .stat-card, .official-channels-bottom'
     );
 
+    const isMobile = window.innerWidth < 768;
     const observer = new IntersectionObserver(function (entries, obs) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -436,13 +442,37 @@
         }
       });
     }, {
-      rootMargin: '0px 0px -40px 0px',
-      threshold: 0.08
+      rootMargin: isMobile ? '120px 0px 120px 0px' : '0px 0px -20px 0px',
+      threshold: isMobile ? 0 : 0.06
     });
 
-    revealElements.forEach(function (el) {
+    revealElements.forEach(function (el, index) {
       el.classList.add('reveal-init');
+      // Stagger slight transition delay on desktop for cards in a row
+      if (!isMobile && el.parentElement) {
+        const siblingIndex = Array.from(el.parentElement.children).indexOf(el);
+        if (siblingIndex >= 0 && siblingIndex < 6) {
+          el.style.transitionDelay = (siblingIndex * 0.07) + 's';
+        }
+      }
       observer.observe(el);
+    });
+
+    // Safety fallback: Ensure all elements are visible after 1.8s in case of fast scroll/edge cases
+    setTimeout(function () {
+      revealElements.forEach(function (el) {
+        if (!el.classList.contains('in-view')) {
+          el.classList.add('in-view');
+        }
+      });
+    }, 1800);
+  } else {
+    // Fallback for browsers without IntersectionObserver
+    document.querySelectorAll(
+      '.portfolio__item, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .capabilities__featured, .footer-cta, .faq-item, .stat-card, .official-channels-bottom'
+    ).forEach(function (el) {
+      el.classList.add('in-view');
     });
   }
 })();
+
