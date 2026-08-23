@@ -349,25 +349,34 @@
   }
 
   // ============================================================
-  // 8. DYNAMIC LOCAL TIME (UTC+5 Offset)
+  // 8. DYNAMIC LOCAL TIME (India Time - Asia/Kolkata IST UTC+5:30)
   // ============================================================
-  const localTimeEl = document.getElementById('localTimeDisplay');
   function updateLocalTime() {
+    const localTimeEl = document.getElementById('localTimeDisplay');
     if (!localTimeEl) return;
-    const now = new Date();
-    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-    const targetDate = new Date(utc + (3600000 * 5)); // +5 offset
-    let hours = targetDate.getHours();
-    let minutes = targetDate.getMinutes();
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12;
-    const strMinutes = minutes < 10 ? '0' + minutes : minutes;
-    const strHours = hours < 10 ? '0' + hours : hours;
-    localTimeEl.textContent = strHours + ':' + strMinutes + ' ' + ampm;
+    try {
+      const now = new Date();
+      const utcMs = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const istMs = utcMs + (5.5 * 3600000);
+      const istDate = new Date(istMs);
+      
+      let hours = istDate.getHours();
+      const minutes = istDate.getMinutes();
+      const seconds = istDate.getSeconds();
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12 || 12;
+      
+      const strHours = hours < 10 ? '0' + hours : hours;
+      const strMinutes = minutes < 10 ? '0' + minutes : minutes;
+      const strSeconds = seconds < 10 ? '0' + seconds : seconds;
+      
+      localTimeEl.textContent = strHours + ':' + strMinutes + ':' + strSeconds + ' ' + ampm + ' IST';
+    } catch (e) {
+      console.error('Time update error:', e);
+    }
   }
   updateLocalTime();
-  setInterval(updateLocalTime, 30000);
+  setInterval(updateLocalTime, 1000);
 
   const yearEl = document.getElementById('currentYear');
   if (yearEl) {

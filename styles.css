@@ -3217,7 +3217,9 @@ button {
 }
 
 .footer__local-time {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   padding: 0.45rem 0.95rem;
   font-size: var(--fs-xs);
   font-weight: 600;
@@ -3226,6 +3228,17 @@ button {
   border-radius: var(--radius-sm);
   color: #ffffff;
   width: fit-content;
+  font-variant-numeric: tabular-nums;
+}
+
+.footer__time-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background: var(--color-green);
+  box-shadow: 0 0 8px rgba(126, 217, 87, 0.8);
+  display: inline-block;
+  animation: pulse-green 2s infinite ease-in-out;
 }
 
 .footer__col-title {
@@ -3340,12 +3353,6 @@ button {
   color: var(--color-text-muted);
 }
 
-.footer__guarantee {
-  font-size: var(--fs-xs);
-  color: #888888;
-  margin-left: auto;
-}
-
 @media (max-width: 991px) {
   .footer__grid {
     grid-template-columns: 1fr 1fr;
@@ -3367,9 +3374,6 @@ button {
   .footer__legal {
     justify-content: center;
     gap: 0.85rem;
-  }
-  .footer__guarantee {
-    margin-left: 0;
   }
 }
 
