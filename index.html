@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260824_scale15">
+  <link rel="stylesheet" href="styles.css?v=20260824_capfullrow">
 
   <!-- JSON-LD Structured SEO Schema -->
   <script type="application/ld+json">
@@ -586,56 +586,224 @@
       </div>
     </section>
 
-    <!-- ======================== CAPABILITIES ======================== -->
+    <!-- ======================== CAPABILITIES (One Feature Per Row: Full Image Showcase) ======================== -->
     <section class="capabilities section-padding" id="capability">
       <div class="container">
         <div class="capabilities__header">
+          <div class="hero__tag-wrapper">
+            <span class="hero__tag">Core Services &amp; Expertise</span>
+          </div>
           <h2 class="capabilities__title">Full-Lifecycle Product &amp; Service Capabilities</h2>
+          <p class="capabilities__subtitle">End-to-end engineering and design precision built for fast-moving startups, scale-ups, and global enterprise teams.</p>
         </div>
 
-        <div class="capabilities__grid">
-          <!-- Capability 1: SaaS & Product Engineering -->
-          <div class="capability-card">
-            <div class="capability-card__img-wrapper">
-              <img src="assets/SaaS_Product_Engineering.png" alt="SaaS &amp; Product Engineering" class="capability-card__img" width="110" height="110">
+        <div class="capabilities__list">
+          <!-- Feature 1: SaaS & Product Engineering -->
+          <div class="capability-row">
+            <div class="capability-row__content">
+              <div class="capability-row__badge">01 · Product Engineering</div>
+              <h3 class="capability-row__title">SaaS &amp; Digital Product Engineering</h3>
+              <p class="capability-row__desc">
+                We architect and engineer complete software products from initial concept to high-velocity scale. We deliver resilient backend APIs, distributed database schemas, and reactive web/mobile applications engineered for 99.99% reliability and sub-50ms query latency.
+              </p>
+              
+              <ul class="capability-row__features">
+                <li>
+                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#4d65ff" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#4d65ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>End-to-End Architecture &amp; Rapid MVP Builds</span>
+                </li>
+                <li>
+                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#4d65ff" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#4d65ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>High-Throughput Node.js, Python &amp; Go Microservices</span>
+                </li>
+                <li>
+                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#4d65ff" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#4d65ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Sub-Second Response Times &amp; Real-Time Data Sync</span>
+                </li>
+              </ul>
+
+              <div class="capability-row__tags">
+                <span class="capability-tag">React / Next.js</span>
+                <span class="capability-tag">Node.js / Python</span>
+                <span class="capability-tag">PostgreSQL / Redis</span>
+                <span class="capability-tag">AWS Cloud</span>
+              </div>
+
+              <div class="capability-row__action">
+                <button class="btn btn--primary js-open-modal" type="button">
+                  <span>Build Your Product</span>
+                  <svg class="icon-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
             </div>
-            <h3 class="capability-card__title">SaaS &amp; Product Engineering</h3>
-            <p class="capability-card__desc">
-              We design and engineer complete software products from MVP to enterprise scale. High-performance frontends, resilient backend APIs, and database architectures optimized for speed and reliability.
-            </p>
+
+            <div class="capability-row__image-box">
+              <div class="capability-row__glow"></div>
+              <img
+                src="assets/SaaS_Product_Engineering.png"
+                alt="SaaS and Product Engineering 3D Architecture"
+                class="capability-row__img"
+                width="500"
+                height="450"
+                loading="lazy"
+              >
+            </div>
           </div>
 
-          <!-- Capability 2: Design Systems & UX -->
-          <div class="capability-card">
-            <div class="capability-card__img-wrapper">
-              <img src="assets/Design_System_UX.png" alt="Design Systems &amp; UX" class="capability-card__img" width="110" height="110">
+          <!-- Feature 2: Design Systems & UX -->
+          <div class="capability-row">
+            <div class="capability-row__content">
+              <div class="capability-row__badge">02 · Design Systems &amp; UX</div>
+              <h3 class="capability-row__title">Multi-Brand Design Systems &amp; UX Engineering</h3>
+              <p class="capability-row__desc">
+                Eliminate design debt and accelerate team shipping velocity. We construct scalable, tokenized design systems and accessible component libraries that bridge the gap between Figma design files and production codebases.
+              </p>
+
+              <ul class="capability-row__features">
+                <li>
+                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#7ed957" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#7ed957" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Custom Figma UI Kits &amp; Semantic Token Architectures</span>
+                </li>
+                <li>
+                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#7ed957" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#7ed957" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Production-Ready React / Vue / Tailwind Component Kits</span>
+                </li>
+                <li>
+                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#7ed957" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#7ed957" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>WCAG 2.1 AA Accessibility &amp; Storybook Documentation</span>
+                </li>
+              </ul>
+
+              <div class="capability-row__tags">
+                <span class="capability-tag">Figma Tokens</span>
+                <span class="capability-tag">Storybook</span>
+                <span class="capability-tag">Radix UI</span>
+                <span class="capability-tag">Atomic Design</span>
+              </div>
+
+              <div class="capability-row__action">
+                <button class="btn btn--primary js-open-modal" type="button">
+                  <span>Scale Your Design System</span>
+                  <svg class="icon-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
             </div>
-            <h3 class="capability-card__title">Design Systems &amp; UX</h3>
-            <p class="capability-card__desc">
-              Scale your product without design debt. We build multi-brand component libraries and tokenized systems in Figma and code, establishing a single source of truth that boosts developer velocity.
-            </p>
+
+            <div class="capability-row__image-box">
+              <div class="capability-row__glow"></div>
+              <img
+                src="assets/Design_System_UX.png"
+                alt="Multi-Brand Design Systems and UX Engineering 3D Model"
+                class="capability-row__img"
+                width="500"
+                height="450"
+                loading="lazy"
+              >
+            </div>
           </div>
 
-          <!-- Capability 3: Brand & Digital Experience -->
-          <div class="capability-card">
-            <div class="capability-card__img-wrapper">
-              <img src="assets/Brand_Digital_Experience.png" alt="Brand &amp; Digital Experience" class="capability-card__img" width="110" height="110">
+          <!-- Feature 3: Brand & Digital Experience -->
+          <div class="capability-row">
+            <div class="capability-row__content">
+              <div class="capability-row__badge">03 · Brand &amp; Motion</div>
+              <h3 class="capability-row__title">Interactive Brand &amp; Digital Experience Design</h3>
+              <p class="capability-row__desc">
+                Command immediate authority in your market. We create distinct visual identities, interactive 3D WebGL scenes, and high-conversion landing experiences that captivate users and convert visitors into long-term loyal customers.
+              </p>
+
+              <ul class="capability-row__features">
+                <li>
+                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#00f0ff" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#00f0ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Distinct Visual Identities, Logos &amp; Brand Guidelines</span>
+                </li>
+                <li>
+                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#00f0ff" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#00f0ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Interactive 3D WebGL, Canvas &amp; Dynamic Spline Scenes</span>
+                </li>
+                <li>
+                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#00f0ff" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#00f0ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Micro-Animations &amp; 60 FPS Fluid Physics Interactions</span>
+                </li>
+              </ul>
+
+              <div class="capability-row__tags">
+                <span class="capability-tag">Three.js / WebGL</span>
+                <span class="capability-tag">Motion UX</span>
+                <span class="capability-tag">Brand Strategy</span>
+                <span class="capability-tag">Conversion UX</span>
+              </div>
+
+              <div class="capability-row__action">
+                <button class="btn btn--primary js-open-modal" type="button">
+                  <span>Elevate Your Brand</span>
+                  <svg class="icon-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
             </div>
-            <h3 class="capability-card__title">Brand &amp; Digital Experience</h3>
-            <p class="capability-card__desc">
-              Position your company to lead its market. We craft cohesive visual identities, interactive 3D web experiences, and product storytelling that create instant credibility and authority.
-            </p>
+
+            <div class="capability-row__image-box">
+              <div class="capability-row__glow"></div>
+              <img
+                src="assets/Brand_Digital_Experience.png"
+                alt="Interactive Brand and Digital Experience 3D Artwork"
+                class="capability-row__img"
+                width="500"
+                height="450"
+                loading="lazy"
+              >
+            </div>
           </div>
 
-          <!-- Capability 4: Enterprise Web & Custom Services -->
-          <div class="capability-card">
-            <div class="capability-card__img-wrapper">
-              <img src="assets/Enterprise_Web_Custom_Services.png" alt="Enterprise Web &amp; Custom Services" class="capability-card__img" width="110" height="110">
+          <!-- Feature 4: Enterprise Web & Custom Services -->
+          <div class="capability-row">
+            <div class="capability-row__content">
+              <div class="capability-row__badge">04 · Enterprise &amp; Scale</div>
+              <h3 class="capability-row__title">Enterprise Web Platforms &amp; Dedicated Dev Pods</h3>
+              <p class="capability-row__desc">
+                We partner with high-growth agencies and enterprise organizations as their core technical delivery engine. We engineer custom web platforms with sub-second load times, headless CMS integrations, and rock-solid code maintainability.
+              </p>
+
+              <ul class="capability-row__features">
+                <li>
+                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#4d65ff" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#4d65ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Dedicated Engineering Pods with Fractional CTO Oversight</span>
+                </li>
+                <li>
+                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#4d65ff" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#4d65ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Sub-Second Global TTFB &amp; 100/100 Google Core Web Vitals</span>
+                </li>
+                <li>
+                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#4d65ff" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#4d65ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Enterprise Security Audits, SOC2 &amp; HIPAA Compliance</span>
+                </li>
+              </ul>
+
+              <div class="capability-row__tags">
+                <span class="capability-tag">Dedicated Pods</span>
+                <span class="capability-tag">Headless CMS</span>
+                <span class="capability-tag">Core Web Vitals</span>
+                <span class="capability-tag">SOC2 / HIPAA</span>
+              </div>
+
+              <div class="capability-row__action">
+                <button class="btn btn--primary js-open-modal" type="button">
+                  <span>Hire Dedicated Pod</span>
+                  <svg class="icon-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
             </div>
-            <h3 class="capability-card__title">Enterprise Web &amp; Custom Services</h3>
-            <p class="capability-card__desc">
-              We partner with leading agencies and enterprise teams as their dedicated engineering engine. High-conversion web architectures, sub-second load times, and clean maintainable codebases built to scale.
-            </p>
+
+            <div class="capability-row__image-box">
+              <div class="capability-row__glow"></div>
+              <img
+                src="assets/Enterprise_Web_Custom_Services.png"
+                alt="Enterprise Web Platforms and Dedicated Pods 3D Visual"
+                class="capability-row__img"
+                width="500"
+                height="450"
+                loading="lazy"
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -1429,7 +1597,7 @@
   </div>
 
   <script src="assets/splash.js"></script>
-  <script src="script.js?v=20260824_scale15"></script>
+  <script src="script.js?v=20260824_capfullrow"></script>
   <script>
     (function () {
       function tickIndiaTime() {

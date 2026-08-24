@@ -73,11 +73,11 @@
         setCursorState('cursor--chip');
       }
       // 3. Cards / Boxes (Portfolio, Capabilities, About, Process, Testimonials, Stats, FAQ, Team, Contact)
-      else if (target.closest('.portfolio__item, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .footer-cta, .faq-item, .stat-card')) {
+      else if (target.closest('.portfolio__item, .capability-row, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .footer-cta, .faq-item, .stat-card')) {
         setCursorState('cursor--card');
       }
       // 4. Images & Avatars
-      else if (target.closest('.hero__avatar, .founder-card__image-box img, .capability-card__img, .process__step-icon')) {
+      else if (target.closest('.hero__avatar, .founder-card__image-box img, .capability-row__img, .capability-card__img, .process__step-icon')) {
         setCursorState('cursor--media');
       }
       // 5. Navigation Links, Social Buttons & Anchors
@@ -88,7 +88,7 @@
 
     document.addEventListener('mouseout', function (e) {
       const target = e.target;
-      if (target.closest('.btn, button, .portfolio__item, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .footer-cta, .faq-item, .stat-card, .tech-item, .hero__tag, .experience__tag, .portfolio__badge, a, img, .navbar__hamburger, .filter-btn, .modal__close, .chip, .modal__chip, input, textarea, select, .contact__social-icon-btn, .footer__social, .official-channels-bottom__btn')) {
+      if (target.closest('.btn, button, .portfolio__item, .capability-row, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .footer-cta, .faq-item, .stat-card, .tech-item, .hero__tag, .experience__tag, .portfolio__badge, a, img, .navbar__hamburger, .filter-btn, .modal__close, .chip, .modal__chip, input, textarea, select, .contact__social-icon-btn, .footer__social, .official-channels-bottom__btn')) {
         resetCursorState();
       }
     }, { passive: true });
@@ -111,7 +111,7 @@
   // ============================================================
   if (window.innerWidth >= 992) {
     const spotlightCards = document.querySelectorAll(
-      '.portfolio__item, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .footer-cta, .stat-card, .faq-item'
+      '.portfolio__item, .capability-row, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .footer-cta, .stat-card, .faq-item'
     );
 
     spotlightCards.forEach(function (card) {
