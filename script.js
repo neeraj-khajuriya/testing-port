@@ -8,7 +8,7 @@
   'use strict';
 
   // ============================================================
-  // 1. SIMPLE & MINIMAL DYNAMIC CURSOR (No Text)
+  // 1. SIMPLE & MINIMAL DYNAMIC CURSOR (With 10% Reactive Scale)
   // ============================================================
   const cursorDot = document.getElementById('cursorDot');
   const cursorRing = document.getElementById('cursorRing');
@@ -53,8 +53,8 @@
     }, { passive: true });
 
     function renderCursor() {
-      ringX += (mouseX - ringX) * 0.2;
-      ringY += (mouseY - ringY) * 0.2;
+      ringX += (mouseX - ringX) * 0.22;
+      ringY += (mouseY - ringY) * 0.22;
       cursorRing.style.left = ringX + 'px';
       cursorRing.style.top = ringY + 'px';
       requestAnimationFrame(renderCursor);
@@ -69,7 +69,7 @@
         setCursorState('cursor--btn');
       }
       // 2. Tech / Skill Chips (Neon cyan focus)
-      else if (target.closest('.tech-item')) {
+      else if (target.closest('.tech-item, .hero__tag, .experience__tag, .portfolio__badge')) {
         setCursorState('cursor--chip');
       }
       // 3. Cards / Boxes (Portfolio, Capabilities, About, Process, Testimonials, Stats, FAQ, Team, Contact)
@@ -88,7 +88,7 @@
 
     document.addEventListener('mouseout', function (e) {
       const target = e.target;
-      if (target.closest('.btn, button, .portfolio__item, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .footer-cta, .faq-item, .stat-card, .tech-item, a, img, .navbar__hamburger, .filter-btn, .modal__close, .chip, .modal__chip, input, textarea, select, .contact__social-icon-btn, .footer__social, .official-channels-bottom__btn')) {
+      if (target.closest('.btn, button, .portfolio__item, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .footer-cta, .faq-item, .stat-card, .tech-item, .hero__tag, .experience__tag, .portfolio__badge, a, img, .navbar__hamburger, .filter-btn, .modal__close, .chip, .modal__chip, input, textarea, select, .contact__social-icon-btn, .footer__social, .official-channels-bottom__btn')) {
         resetCursorState();
       }
     }, { passive: true });
@@ -107,7 +107,7 @@
   }
 
   // ============================================================
-  // 2. INTERACTIVE CARD SPOTLIGHT GLOW & 3D TILT
+  // 2. INTERACTIVE CARD SPOTLIGHT GLOW & 15% SCALE 3D TILT
   // ============================================================
   if (window.innerWidth >= 992) {
     const spotlightCards = document.querySelectorAll(
@@ -132,15 +132,36 @@
         const deltaX = (x - centerX) / centerX;
         const deltaY = (y - centerY) / centerY;
 
-        const rotateX = (deltaY * -4.5).toFixed(2);
-        const rotateY = (deltaX * 4.5).toFixed(2);
+        const rotateX = (deltaY * -4.2).toFixed(2);
+        const rotateY = (deltaX * 4.2).toFixed(2);
 
-        card.style.transform = 'perspective(900px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-4px)';
+        card.style.transform = 'perspective(900px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-8px) scale3d(1.12, 1.12, 1.12)';
       });
 
       card.addEventListener('mouseleave', function () {
         card.style.setProperty('--spotlight-opacity', '0');
         card.style.transform = '';
+      });
+    });
+
+    // Magnetic micro-interaction for interactive buttons and pills (15% scale-up)
+    const magneticElements = document.querySelectorAll(
+      '.btn, .official-channels-bottom__btn, .footer__social, .filter-btn, .modal__close, .navbar__hamburger, .mobile-menu__close, .mobile-menu__social-btn'
+    );
+
+    magneticElements.forEach(function (elem) {
+      elem.addEventListener('mousemove', function (e) {
+        const rect = elem.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const deltaX = (e.clientX - centerX) * 0.22;
+        const deltaY = (e.clientY - centerY) * 0.22;
+
+        elem.style.transform = 'translate(' + deltaX.toFixed(1) + 'px, ' + (deltaY - 4).toFixed(1) + 'px) scale(1.15)';
+      });
+
+      elem.addEventListener('mouseleave', function () {
+        elem.style.transform = '';
       });
     });
   }
