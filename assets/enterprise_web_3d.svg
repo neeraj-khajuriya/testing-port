@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" fill="none">
+  <defs>
+    <!-- Deep Indigo & Amber Ambient Glow -->
+    <radialGradient id="entUniqueGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4d65ff" stop-opacity="0.6"/>
+      <stop offset="45%" stop-color="#f59e0b" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- 3D Earth Globe Gradients -->
+    <radialGradient id="globeSphereGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="30%" stop-color="#2563eb"/>
+      <stop offset="70%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#090a14"/>
+    </radialGradient>
+
+    <!-- Monolith Tower Gradients -->
+    <linearGradient id="towerLeftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e2438"/>
+      <stop offset="100%" stop-color="#0b0d14"/>
+    </linearGradient>
+    <linearGradient id="towerRightGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a334e"/>
+      <stop offset="100%" stop-color="#121624"/>
+    </linearGradient>
+    <linearGradient id="towerTopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+
+    <!-- Fiber & Gold Gradients -->
+    <linearGradient id="goldLaser" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="blueLaser" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#4d65ff"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="entGlowFx" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="entMonolithShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#000000" flood-opacity="0.9"/>
+    </filter>
+  </defs>
+
+  <!-- Ambient Backdrop Glow -->
+  <circle cx="100" cy="100" r="90" fill="url(#entUniqueGlow)"/>
+
+  <!-- Level 0: Datacenter Circular Base Ring with Grid Lines -->
+  <g filter="url(#entMonolithShadow)">
+    <ellipse cx="100" cy="154" rx="60" ry="24" fill="#080b14" stroke="rgba(77, 101, 255, 0.35)" stroke-width="1.2"/>
+    <ellipse cx="100" cy="154" rx="42" ry="17" fill="#04060a" stroke="rgba(245, 158, 11, 0.3)" stroke-width="1"/>
+    
+    <!-- Concentric Fiber Radial Traces -->
+    <line x1="45" y1="154" x2="65" y2="154" stroke="#4d65ff" stroke-width="1.5" filter="url(#entGlowFx)"/>
+    <line x1="135" y1="154" x2="155" y2="154" stroke="#4d65ff" stroke-width="1.5" filter="url(#entGlowFx)"/>
+    <line x1="100" y1="130" x2="100" y2="137" stroke="#f59e0b" stroke-width="1.5" filter="url(#entGlowFx)"/>
+    <line x1="100" y1="171" x2="100" y2="178" stroke="#f59e0b" stroke-width="1.5" filter="url(#entGlowFx)"/>
+  </g>
+
+  <!-- Level 1: Dual Enterprise Server Monoliths (Left & Right High-Rise Pillars) -->
+  <!-- Left Pillar Monolith -->
+  <g transform="translate(0, -10)" filter="url(#entMonolithShadow)">
+    <path d="M66 100 L46 88 L66 76 L86 88 Z" fill="url(#towerTopGrad)" stroke="rgba(255, 255, 255, 0.2)" stroke-width="1"/>
+    <path d="M46 88 L46 142 L66 154 L66 100 Z" fill="url(#towerLeftGrad)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+    <path d="M86 88 L86 142 L66 154 L66 100 Z" fill="url(#towerRightGrad)" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+
+    <!-- Left Pillar Server LEDs -->
+    <line x1="52" y1="98" x2="62" y2="104" stroke="#4d65ff" stroke-width="2" stroke-linecap="round" filter="url(#entGlowFx)"/>
+    <line x1="52" y1="108" x2="62" y2="114" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" filter="url(#entGlowFx)"/>
+    <line x1="52" y1="118" x2="62" y2="124" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" filter="url(#entGlowFx)"/>
+    <line x1="52" y1="128" x2="62" y2="134" stroke="#10b981" stroke-width="2" stroke-linecap="round" filter="url(#entGlowFx)"/>
+  </g>
+
+  <!-- Right Pillar Monolith -->
+  <g transform="translate(0, -10)" filter="url(#entMonolithShadow)">
+    <path d="M134 100 L114 88 L134 76 L154 88 Z" fill="url(#towerTopGrad)" stroke="rgba(255, 255, 255, 0.2)" stroke-width="1"/>
+    <path d="M114 88 L114 142 L134 154 L134 100 Z" fill="url(#towerLeftGrad)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+    <path d="M154 88 L154 142 L134 154 L134 100 Z" fill="url(#towerRightGrad)" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+
+    <!-- Right Pillar Server LEDs -->
+    <line x1="138" y1="104" x2="148" y2="98" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" filter="url(#entGlowFx)"/>
+    <line x1="138" y1="114" x2="148" y2="108" stroke="#4d65ff" stroke-width="2" stroke-linecap="round" filter="url(#entGlowFx)"/>
+    <line x1="138" y1="124" x2="148" y2="118" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" filter="url(#entGlowFx)"/>
+    <line x1="138" y1="134" x2="148" y2="128" stroke="#10b981" stroke-width="2" stroke-linecap="round" filter="url(#entGlowFx)"/>
+  </g>
+
+  <!-- Level 2: Center Floating 3D Global Network Earth Sphere -->
+  <g transform="translate(0, -42)" filter="url(#entMonolithShadow)">
+    <!-- 3D Planet Globe Sphere -->
+    <circle cx="100" cy="80" r="32" fill="url(#globeSphereGrad)" stroke="rgba(255, 255, 255, 0.5)" stroke-width="1.2"/>
+    
+    <!-- Wireframe Longitude & Latitude Rings on Sphere -->
+    <ellipse cx="100" cy="80" rx="32" ry="12" fill="none" stroke="rgba(255, 255, 255, 0.4)" stroke-width="1"/>
+    <ellipse cx="100" cy="80" rx="32" ry="22" fill="none" stroke="rgba(255, 255, 255, 0.25)" stroke-width="0.8"/>
+    <ellipse cx="100" cy="80" rx="14" ry="32" fill="none" stroke="rgba(255, 255, 255, 0.35)" stroke-width="1"/>
+    <line x1="100" y1="48" x2="100" y2="112" stroke="rgba(255, 255, 255, 0.5)" stroke-width="1"/>
+
+    <!-- Glowing Global Hub Nodes on Sphere -->
+    <circle cx="92" cy="74" r="3" fill="#f59e0b" filter="url(#entGlowFx)"/>
+    <circle cx="92" cy="74" r="1.2" fill="#ffffff"/>
+
+    <circle cx="114" cy="84" r="2.5" fill="#60a5fa" filter="url(#entGlowFx)"/>
+    <circle cx="114" cy="84" r="1" fill="#ffffff"/>
+
+    <circle cx="82" cy="88" r="2.5" fill="#10b981" filter="url(#entGlowFx)"/>
+    <circle cx="82" cy="88" r="1" fill="#ffffff"/>
+  </g>
+
+  <!-- Level 3: Orbiting Fiber Optical Rings encircling Earth Sphere -->
+  <g transform="translate(0, -42)">
+    <!-- Tilted Gold Ring -->
+    <ellipse cx="100" cy="80" rx="46" ry="18" transform="rotate(-30 100 80)" fill="none" stroke="url(#goldLaser)" stroke-width="2" stroke-dasharray="10 4" filter="url(#entGlowFx)"/>
+    <!-- Tilted Blue Ring -->
+    <ellipse cx="100" cy="80" rx="46" ry="18" transform="rotate(30 100 80)" fill="none" stroke="url(#blueLaser)" stroke-width="1.6" stroke-dasharray="8 4" opacity="0.8" filter="url(#entGlowFx)"/>
+
+    <!-- Orbital Communication Satellites -->
+    <circle cx="140" cy="62" r="3.5" fill="#f59e0b" filter="url(#entGlowFx)"/>
+    <circle cx="140" cy="62" r="1.5" fill="#ffffff"/>
+
+    <circle cx="60" cy="98" r="3" fill="#60a5fa" filter="url(#entGlowFx)"/>
+    <circle cx="60" cy="98" r="1.2" fill="#ffffff"/>
+  </g>
+</svg>

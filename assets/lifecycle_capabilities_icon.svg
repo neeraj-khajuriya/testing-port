@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" fill="none">
+  <defs>
+    <!-- Background Radial Glow -->
+    <radialGradient id="lifecycleGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4d65ff" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#7ed957" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Ring Gradients -->
+    <linearGradient id="ringGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4d65ff"/>
+      <stop offset="50%" stop-color="#00f0ff"/>
+      <stop offset="100%" stop-color="#7ed957"/>
+    </linearGradient>
+
+    <linearGradient id="ringGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7ed957"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#4d65ff"/>
+    </linearGradient>
+
+    <!-- Chrome Sphere Gradient -->
+    <radialGradient id="centerCoreGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="25%" stop-color="#c7d2fe"/>
+      <stop offset="60%" stop-color="#4338ca"/>
+      <stop offset="100%" stop-color="#0f111a"/>
+    </radialGradient>
+
+    <!-- Glow Filter -->
+    <filter id="lifecycleBloom" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <filter id="coreShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity="0.9"/>
+    </filter>
+  </defs>
+
+  <!-- Ambient Glow -->
+  <circle cx="80" cy="80" r="70" fill="url(#lifecycleGlow)"/>
+
+  <!-- Outer Orbital Lifecycle Rings (Interlocking Mobius / Helix Loop) -->
+  <g filter="url(#lifecycleBloom)">
+    <!-- Primary Orbital Loop -->
+    <ellipse cx="80" cy="80" rx="56" ry="24" transform="rotate(-30 80 80)" fill="none" stroke="url(#ringGrad1)" stroke-width="3" stroke-dasharray="12 4"/>
+    
+    <!-- Secondary Intersecting Orbital Loop -->
+    <ellipse cx="80" cy="80" rx="56" ry="24" transform="rotate(30 80 80)" fill="none" stroke="url(#ringGrad2)" stroke-width="3" stroke-dasharray="12 4"/>
+  </g>
+
+  <!-- Central 3D Core Sphere with Drop Shadow -->
+  <g filter="url(#coreShadow)">
+    <circle cx="80" cy="80" r="26" fill="url(#centerCoreGrad)" stroke="rgba(255, 255, 255, 0.4)" stroke-width="1.2"/>
+    
+    <!-- Core Grid Lines -->
+    <ellipse cx="80" cy="80" rx="26" ry="10" fill="none" stroke="rgba(255, 255, 255, 0.25)" stroke-width="0.8"/>
+    <ellipse cx="80" cy="80" rx="10" ry="26" fill="none" stroke="rgba(255, 255, 255, 0.25)" stroke-width="0.8"/>
+  </g>
+
+  <!-- Lifecycle Phase Node Spheres (Discovery, Estimate, Design, Develop, Scale) -->
+  <!-- Node 1: Top (Cyan) -->
+  <g filter="url(#lifecycleBloom)">
+    <circle cx="80" cy="24" r="6" fill="#00f0ff"/>
+    <circle cx="80" cy="24" r="2" fill="#ffffff"/>
+  </g>
+
+  <!-- Node 2: Right Top (Green) -->
+  <g filter="url(#lifecycleBloom)">
+    <circle cx="128" cy="52" r="5.5" fill="#7ed957"/>
+    <circle cx="128" cy="52" r="1.8" fill="#ffffff"/>
+  </g>
+
+  <!-- Node 3: Right Bottom (Indigo) -->
+  <g filter="url(#lifecycleBloom)">
+    <circle cx="128" cy="108" r="6" fill="#4d65ff"/>
+    <circle cx="128" cy="108" r="2" fill="#ffffff"/>
+  </g>
+
+  <!-- Node 4: Left Bottom (Purple) -->
+  <g filter="url(#lifecycleBloom)">
+    <circle cx="32" cy="108" r="5.5" fill="#a855f7"/>
+    <circle cx="32" cy="108" r="1.8" fill="#ffffff"/>
+  </g>
+
+  <!-- Node 5: Left Top (Cyan) -->
+  <g filter="url(#lifecycleBloom)">
+    <circle cx="32" cy="52" r="6" fill="#00f0ff"/>
+    <circle cx="32" cy="52" r="2" fill="#ffffff"/>
+  </g>
+</svg>
