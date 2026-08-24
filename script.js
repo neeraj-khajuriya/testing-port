@@ -115,6 +115,8 @@
     );
 
     spotlightCards.forEach(function (card) {
+      const isCapabilityRow = card.classList.contains('capability-row');
+
       card.addEventListener('mouseenter', function () {
         card.style.setProperty('--spotlight-opacity', '1');
       });
@@ -127,20 +129,64 @@
         card.style.setProperty('--mouse-x', x + 'px');
         card.style.setProperty('--mouse-y', y + 'px');
 
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const deltaX = (x - centerX) / centerX;
-        const deltaY = (y - centerY) / centerY;
+        // Skip 3D perspective transformation on capability rows to guarantee 100% crisp 4K image sharpness
+        if (!isCapabilityRow) {
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const deltaX = (x - centerX) / centerX;
+          const deltaY = (y - centerY) / centerY;
 
-        const rotateX = (deltaY * -4.2).toFixed(2);
-        const rotateY = (deltaX * 4.2).toFixed(2);
+          const rotateX = (deltaY * -4.2).toFixed(2);
+          const rotateY = (deltaX * 4.2).toFixed(2);
 
-        card.style.transform = 'perspective(900px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-8px) scale3d(1.12, 1.12, 1.12)';
+          card.style.transform = 'perspective(900px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-8px) scale3d(1.12, 1.12, 1.12)';
+        }
       });
 
       card.addEventListener('mouseleave', function () {
         card.style.setProperty('--spotlight-opacity', '0');
-        card.style.transform = '';
+        if (!isCapabilityRow) {
+          card.style.transform = '';
+        }
+      });
+    });
+
+    // Capability Image Dynamic Center Positioning
+    const capabilityRows = document.querySelectorAll('.capability-row');
+    capabilityRows.forEach(function (row) {
+      const imgBox = row.querySelector('.capability-row__image-box');
+      if (!imgBox) return;
+
+      function calcCenterShift() {
+        if (window.innerWidth > 991) {
+          const rowRect = row.getBoundingClientRect();
+          const boxRect = imgBox.getBoundingClientRect();
+          const rowCenterX = rowRect.left + rowRect.width / 2;
+          const boxCenterX = boxRect.left + boxRect.width / 2;
+          const shiftX = rowCenterX - boxCenterX;
+
+          const rowCenterY = rowRect.top + rowRect.height / 2;
+          const boxCenterY = boxRect.top + boxRect.height / 2;
+          const shiftY = rowCenterY - boxCenterY;
+
+          imgBox.style.setProperty('--center-x', shiftX.toFixed(1) + 'px');
+          imgBox.style.setProperty('--center-y', shiftY.toFixed(1) + 'px');
+        } else {
+          imgBox.style.setProperty('--center-x', '0px');
+          imgBox.style.setProperty('--center-y', '0px');
+        }
+      }
+
+      imgBox.addEventListener('mouseenter', function () {
+        calcCenterShift();
+        row.classList.add('is-image-hovered');
+      });
+      imgBox.addEventListener('mouseleave', function () {
+        row.classList.remove('is-image-hovered');
+      });
+      row.addEventListener('mouseenter', calcCenterShift);
+      row.addEventListener('mouseleave', function () {
+        row.classList.remove('is-image-hovered');
       });
     });
 
