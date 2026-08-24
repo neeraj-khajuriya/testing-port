@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" fill="none">
+  <defs>
+    <!-- Background Glow -->
+    <radialGradient id="brandBgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.5"/>
+      <stop offset="45%" stop-color="#ef4444" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Gem & Crystal Gradients -->
+    <linearGradient id="gemTopFacet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="45%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="gemLeftFacet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+    <linearGradient id="gemRightFacet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#92400e"/>
+    </linearGradient>
+
+    <!-- Solar & Rainbow Neon Gradients -->
+    <linearGradient id="solarFlareGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <linearGradient id="purpleGoldOrbit" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="brandBloomMax" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="brandDrop" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#000000" flood-opacity="0.9"/>
+    </filter>
+  </defs>
+
+  <!-- Ambient Backdrop -->
+  <circle cx="100" cy="100" r="90" fill="url(#brandBgGlow)"/>
+
+  <!-- Level 0: Hex Base Stage -->
+  <g filter="url(#brandDrop)">
+    <path d="M100 168 L40 134 L100 100 L160 134 Z" fill="#140e06" stroke="rgba(245, 158, 11, 0.3)" stroke-width="1.2"/>
+    <path d="M40 134 L40 144 L100 178 L100 168 Z" fill="#080502"/>
+    <path d="M160 134 L160 144 L100 178 L100 168 Z" fill="#201509"/>
+
+    <!-- Concentric Stage Ring -->
+    <ellipse cx="100" cy="134" rx="42" ry="20" fill="none" stroke="rgba(245, 158, 11, 0.22)" stroke-width="1.2"/>
+    <ellipse cx="100" cy="134" rx="24" ry="11" fill="none" stroke="rgba(239, 68, 68, 0.25)" stroke-width="1"/>
+  </g>
+
+  <!-- Level 1: Floating Brand Identity Octahedron Base -->
+  <g transform="translate(0, -22)" filter="url(#brandDrop)">
+    <path d="M100 110 L50 82 L100 54 L150 82 Z" fill="url(#gemTopFacet)" stroke="rgba(254, 240, 138, 0.45)" stroke-width="1.2"/>
+    <path d="M50 82 L50 96 L100 124 L100 110 Z" fill="url(#gemLeftFacet)"/>
+    <path d="M150 82 L150 96 L100 124 L100 110 Z" fill="url(#gemRightFacet)"/>
+
+    <!-- Specular Light Lines on Facets -->
+    <line x1="100" y1="54" x2="100" y2="110" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
+    <line x1="50" y1="82" x2="100" y2="110" stroke="#ffffff" stroke-width="1.2" opacity="0.4"/>
+    <line x1="150" y1="82" x2="100" y2="110" stroke="#ffffff" stroke-width="1.2" opacity="0.4"/>
+  </g>
+
+  <!-- Level 2: Top Floating Faceted Diamond Beacon -->
+  <g transform="translate(0, -48)" filter="url(#brandDrop)">
+    <path d="M100 16 L124 40 L100 56 L76 40 Z" fill="#fef08a" stroke="#ffffff" stroke-width="1.4" filter="url(#brandBloomMax)"/>
+    <path d="M76 40 L100 56 L100 80 L76 54 Z" fill="#d97706"/>
+    <path d="M124 40 L100 56 L100 80 L124 54 Z" fill="#b45309"/>
+
+    <!-- Central Diamond Core Flare -->
+    <circle cx="100" cy="40" r="4" fill="#ffffff" filter="url(#brandBloomMax)"/>
+
+    <!-- 4-Point Star Flare Rays -->
+    <line x1="100" y1="24" x2="100" y2="56" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" filter="url(#brandBloomMax)"/>
+    <line x1="84" y1="40" x2="116" y2="40" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" filter="url(#brandBloomMax)"/>
+  </g>
+
+  <!-- Dual Crossing 3D Orbital Rings -->
+  <g transform="translate(0, -56)">
+    <!-- Amber Orbit -->
+    <ellipse cx="100" cy="52" rx="48" ry="22" transform="rotate(30 100 52)" fill="none" stroke="url(#solarFlareGrad)" stroke-width="1.8" stroke-dasharray="10 5" filter="url(#brandBloomMax)"/>
+    <circle cx="146" cy="65" r="3.5" fill="#fef08a" filter="url(#brandBloomMax)"/>
+    <circle cx="146" cy="65" r="1.5" fill="#ffffff"/>
+
+    <!-- Violet Orbit -->
+    <ellipse cx="100" cy="52" rx="48" ry="22" transform="rotate(-30 100 52)" fill="none" stroke="url(#purpleGoldOrbit)" stroke-width="1.4" stroke-dasharray="8 4" filter="url(#brandBloomMax)"/>
+    <circle cx="54" cy="65" r="3.5" fill="#ef4444" filter="url(#brandBloomMax)"/>
+    <circle cx="54" cy="65" r="1.5" fill="#ffffff"/>
+  </g>
+</svg>

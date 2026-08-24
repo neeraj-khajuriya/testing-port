@@ -1869,19 +1869,23 @@ button {
 
 .capabilities__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-xl);
-  margin-bottom: var(--space-2xl);
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+  margin-bottom: 0;
 }
 
 .capability-card {
   text-align: center;
-  padding: 3rem 2.25rem;
+  padding: 2.5rem 1.35rem;
   border-radius: var(--radius-lg);
   background: var(--color-bg-elevated);
   border: 1px solid var(--color-border);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
   transition: transform var(--transition-smooth), border-color var(--transition-base), box-shadow var(--transition-smooth);
 }
 
@@ -1898,13 +1902,13 @@ button {
 .capability-card:hover {
   transform: translateY(-5px);
   border-color: var(--color-accent);
-  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.55), 0 0 25px rgba(77, 101, 255, 0.18);
 }
 
 .capability-card__img-wrapper {
   margin: 0 auto var(--space-lg);
-  width: 110px;
-  height: 110px;
+  width: 100px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1916,61 +1920,48 @@ button {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.capability-card:hover .capability-card__img {
+  transform: scale(1.08) translateY(-2px);
 }
 
 .capability-card__title {
-  font-size: var(--fs-lg);
+  font-size: var(--fs-base);
   font-weight: 600;
-  margin-bottom: var(--space-sm);
+  margin-bottom: 0.65rem;
   position: relative;
   z-index: 1;
+  line-height: 1.35;
+  min-height: 2.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .capability-card__desc {
-  font-size: var(--fs-sm);
+  font-size: 13.5px;
   color: var(--color-text-secondary);
-  line-height: 1.8;
+  line-height: 1.68;
   position: relative;
   z-index: 1;
-}
-
-.capabilities__featured {
-  text-align: center;
-  padding: var(--space-3xl) var(--space-lg);
-  border-top: 1px solid var(--color-border);
-  position: relative;
-  margin-top: var(--space-2xl);
-}
-
-.capabilities__featured-icon {
-  width: 48px;
-  height: 48px;
-  margin: 0 auto var(--space-lg);
-}
-
-.capabilities__featured-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.capabilities__featured-title {
-  font-size: var(--fs-lg);
-  font-weight: 600;
-  margin-bottom: var(--space-sm);
-}
-
-.capabilities__featured-desc {
-  font-size: var(--fs-sm);
-  color: var(--color-text-secondary);
-  max-width: 540px;
-  margin: 0 auto;
-  line-height: 1.8;
 }
 
 @media (max-width: 991px) {
   .capabilities__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 640px) {
+  .capabilities__grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .capability-card__title {
+    min-height: auto;
   }
 }
 
@@ -1979,16 +1970,12 @@ button {
     font-size: clamp(1.8rem, 5vw, 2.4rem);
   }
   .capability-card {
-    padding: 2.25rem 1.5rem;
+    padding: 2.25rem 1.4rem;
   }
   .capability-card__img-wrapper {
-    width: 90px;
-    height: 90px;
+    width: 85px;
+    height: 85px;
     margin-bottom: 1.25rem;
-  }
-  .capabilities__featured {
-    padding: 2rem 1.25rem;
-    margin-top: 1.5rem;
   }
 }
 

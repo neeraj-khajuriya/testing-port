@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" fill="none">
+  <defs>
+    <!-- Background Glow -->
+    <radialGradient id="uxBgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ec4899" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Glass & Prisms -->
+    <linearGradient id="uxTopIso" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a2e66"/>
+      <stop offset="45%" stop-color="#241438"/>
+      <stop offset="100%" stop-color="#10081c"/>
+    </linearGradient>
+    <linearGradient id="uxLeftIso" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#221236"/>
+      <stop offset="100%" stop-color="#0a0512"/>
+    </linearGradient>
+    <linearGradient id="uxRightIso" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#361a52"/>
+      <stop offset="100%" stop-color="#140924"/>
+    </linearGradient>
+
+    <!-- Neon Gradients -->
+    <linearGradient id="rosePurpleNeon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="50%" stop-color="#d946ef"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="tokenCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="uxBloomMax" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="uxDrop" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#000000" flood-opacity="0.9"/>
+    </filter>
+  </defs>
+
+  <!-- Ambient Backdrop -->
+  <circle cx="100" cy="100" r="90" fill="url(#uxBgGlow)"/>
+
+  <!-- Level 0: Hex Base Component Stage -->
+  <g filter="url(#uxDrop)">
+    <path d="M100 168 L40 134 L100 100 L160 134 Z" fill="#12091c" stroke="rgba(244, 63, 94, 0.3)" stroke-width="1.2"/>
+    <path d="M40 134 L40 144 L100 178 L100 168 Z" fill="#08040d"/>
+    <path d="M160 134 L160 144 L100 178 L100 168 Z" fill="#1c0d2c"/>
+
+    <!-- Wireframe Matrix on Base -->
+    <line x1="70" y1="117" x2="130" y2="151" stroke="rgba(244, 63, 94, 0.2)" stroke-width="1"/>
+    <line x1="130" y1="117" x2="70" y2="151" stroke="rgba(217, 70, 239, 0.2)" stroke-width="1"/>
+  </g>
+
+  <!-- Level 1: Floating UI Glass Token Layer -->
+  <g transform="translate(0, -22)" filter="url(#uxDrop)">
+    <path d="M100 112 L48 82 L100 52 L152 82 Z" fill="url(#uxTopIso)" stroke="rgba(244, 114, 182, 0.35)" stroke-width="1.2"/>
+    <path d="M48 82 L48 94 L100 124 L100 112 Z" fill="url(#uxLeftIso)" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+    <path d="M152 82 L152 94 L100 124 L100 112 Z" fill="url(#uxRightIso)" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1"/>
+
+    <!-- Design Token Spheres (Pills) on Surface -->
+    <circle cx="74" cy="80" r="5" fill="#f43f5e" filter="url(#uxBloomMax)"/>
+    <circle cx="74" cy="80" r="1.8" fill="#ffffff"/>
+
+    <circle cx="92" cy="90" r="5" fill="#d946ef" filter="url(#uxBloomMax)"/>
+    <circle cx="92" cy="90" r="1.8" fill="#ffffff"/>
+
+    <circle cx="110" cy="100" r="5" fill="#38bdf8" filter="url(#uxBloomMax)"/>
+    <circle cx="110" cy="100" r="1.8" fill="#ffffff"/>
+
+    <circle cx="128" cy="90" r="5" fill="#10b981" filter="url(#uxBloomMax)"/>
+    <circle cx="128" cy="90" r="1.8" fill="#ffffff"/>
+  </g>
+
+  <!-- Level 2: Top Floating Design System Figma Block -->
+  <g transform="translate(0, -48)" filter="url(#uxDrop)">
+    <path d="M100 66 L64 46 L100 26 L136 46 Z" fill="url(#rosePurpleNeon)" stroke="#ffffff" stroke-width="1.4" filter="url(#uxBloomMax)"/>
+    <path d="M64 46 L64 60 L100 80 L100 66 Z" fill="#831843"/>
+    <path d="M136 46 L136 60 L100 80 L100 66 Z" fill="#701a75"/>
+
+    <!-- 4 Vector Bezier Anchor Points on Face -->
+    <rect x="80" y="32" width="5" height="5" fill="#ffffff" filter="url(#uxBloomMax)"/>
+    <rect x="115" y="32" width="5" height="5" fill="#ffffff" filter="url(#uxBloomMax)"/>
+    <rect x="115" y="52" width="5" height="5" fill="#ffffff" filter="url(#uxBloomMax)"/>
+    <rect x="80" y="52" width="5" height="5" fill="#ffffff" filter="url(#uxBloomMax)"/>
+    <!-- Connecting Vector Line -->
+    <path d="M82 34 Q100 24 117 34 T117 54 T82 54 Z" fill="none" stroke="#ffffff" stroke-width="1.2" opacity="0.8"/>
+  </g>
+
+  <!-- Top Orbiting Creative Palette Ring -->
+  <g transform="translate(0, -56)">
+    <ellipse cx="100" cy="52" rx="46" ry="20" transform="rotate(-20 100 52)" fill="none" stroke="url(#rosePurpleNeon)" stroke-width="1.8" stroke-dasharray="10 5" filter="url(#uxBloomMax)"/>
+    <circle cx="146" cy="44" r="3.5" fill="#f43f5e" filter="url(#uxBloomMax)"/>
+    <circle cx="146" cy="44" r="1.5" fill="#ffffff"/>
+
+    <circle cx="54" cy="60" r="3.5" fill="#38bdf8" filter="url(#uxBloomMax)"/>
+    <circle cx="54" cy="60" r="1.5" fill="#ffffff"/>
+  </g>
+</svg>
