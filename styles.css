@@ -3729,9 +3729,28 @@ button {
   font-size: var(--fs-xs);
   font-weight: 500;
   color: #d1d1d1;
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.03em;
+}
+
+.form-hint {
+  display: block;
+  font-size: 11.5px;
+  color: var(--color-text-muted);
+  margin-top: -0.15rem;
   margin-bottom: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
+
+.form-required {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+.form-optional {
+  color: var(--color-text-muted);
+  font-weight: 400;
+  font-size: 11px;
 }
 
 .chip-grid {
@@ -3782,20 +3801,118 @@ button {
 .form-input,
 .form-textarea {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1.1rem;
   font-size: var(--fs-sm);
   font-family: inherit;
   color: var(--color-text);
   background: #181818;
   border: 1px solid #2e2e2e;
   border-radius: var(--radius-md);
-  transition: border-color var(--transition-fast);
+  box-sizing: border-box;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
 }
 
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
+  background: #1c1c1c;
   border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(77, 101, 255, 0.2);
+}
+
+/* File Upload Dropzone */
+.form-file-dropzone {
+  position: relative;
+  border: 1.5px dashed #3a3a3a;
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), transform 0.25s ease, box-shadow var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.form-file-dropzone:hover,
+.form-file-dropzone.is-dragover {
+  border-color: var(--color-accent);
+  background: rgba(77, 101, 255, 0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(77, 101, 255, 0.2);
+}
+
+.form-file-icon {
+  width: 26px;
+  height: 26px;
+  color: var(--color-accent);
+  margin-bottom: 0.2rem;
+  transition: transform 0.25s ease;
+}
+
+.form-file-dropzone:hover .form-file-icon {
+  transform: translateY(-2px) scale(1.12);
+}
+
+.form-file-title {
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  color: #f0f0f0;
+}
+
+.form-file-hint {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.form-file-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.form-file-selected {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.95rem;
+  background: rgba(77, 101, 255, 0.12);
+  border: 1px solid rgba(77, 101, 255, 0.4);
+  border-radius: var(--radius-sm);
+  margin-top: 0.65rem;
+  font-size: var(--fs-xs);
+  color: #ffffff;
+}
+
+.form-file-selected .file-name {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.form-file-remove {
+  background: transparent;
+  border: none;
+  color: #ff6b6b;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.form-file-remove:hover {
+  transform: scale(1.3);
 }
 
 .btn--modal-submit {

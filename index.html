@@ -21,9 +21,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   <link rel="stylesheet" href="styles.css?v=20260824_scale15">
 =======
   <link rel="stylesheet" href="styles.css?v=20260825_center_leadership">
+>>>>>>> Stashed changes
+=======
+  <link rel="stylesheet" href="styles.css?v=20260825_live_jotform_connected">
 >>>>>>> Stashed changes
 
   <!-- JSON-LD Structured SEO Schema -->
@@ -1370,51 +1374,91 @@
       
       <div class="modal__header">
         <span class="modal__tag"><span class="btn__dot"></span> Fast Response · 24h Turnaround</span>
-        <h3 class="modal__title" id="modalTitle">Work with Us — Technomitic</h3>
-        <p class="modal__subtitle">Tell us about your product or engineering goals to receive a scoped estimate and timeline.</p>
+        <h3 class="modal__title" id="modalTitle">Project Inquiry</h3>
+        <p class="modal__subtitle">It's normal to have questions! Tell us about your goals to receive a scoped estimate and timeline.</p>
       </div>
 
-      <form class="modal__form" id="projectForm" onsubmit="event.preventDefault(); handleFormSubmit();">
-        <!-- Step 1: Project Type -->
+      <form class="modal__form" id="projectForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" onsubmit="handleFormSubmit(event);">
+        <!-- Web3Forms Direct Inbox Integration -->
+        <input type="hidden" name="access_key" value="ecbb8ceb-0cef-4d5f-b126-848512aef98c">
+        <input type="hidden" name="subject" value="New Project Inquiry — Technomitic">
+        <input type="hidden" name="from_name" value="Technomitic Client Intake">
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none;">
+        
+        <!-- Question 1: What services are you looking for? -->
         <div class="form-group">
-          <label class="form-label">1. Select Project Scope</label>
+          <label class="form-label">1. What services are you looking for? <span class="form-required">*</span></label>
           <div class="chip-grid">
-            <label class="chip"><input type="radio" name="projectType" value="SaaS MVP" checked><span>SaaS MVP Product</span></label>
-            <label class="chip"><input type="radio" name="projectType" value="Dedicated Pod"><span>Dedicated Engineering Pod</span></label>
-            <label class="chip"><input type="radio" name="projectType" value="Enterprise Web"><span>Enterprise Web Platform</span></label>
-            <label class="chip"><input type="radio" name="projectType" value="Design System"><span>Design System &amp; UX</span></label>
+            <label class="chip"><input type="radio" name="services" value="Website Development" checked><span>Website Development</span></label>
+            <label class="chip"><input type="radio" name="services" value="Software Development"><span>Software Development</span></label>
+            <label class="chip"><input type="radio" name="services" value="Application Development"><span>Application Development</span></label>
+            <label class="chip"><input type="radio" name="services" value="Website Maintenance"><span>Website Maintenance</span></label>
           </div>
         </div>
 
-        <!-- Step 2: Budget Range -->
+        <!-- Question 2: What's your timeline? -->
         <div class="form-group">
-          <label class="form-label">2. Target Budget Range</label>
+          <label class="form-label">2. What's your timeline? <span class="form-required">*</span></label>
           <div class="chip-grid">
-            <label class="chip"><input type="radio" name="budget" value="$5k - $15k" checked><span>$5k - $15k</span></label>
-            <label class="chip"><input type="radio" name="budget" value="$15k - $35k"><span>$15k - $35k</span></label>
-            <label class="chip"><input type="radio" name="budget" value="$35k+"><span>$35k+ / Enterprise</span></label>
+            <label class="chip"><input type="radio" name="timeline" value="1 week"><span>1 week</span></label>
+            <label class="chip"><input type="radio" name="timeline" value="2-3 weeks" checked><span>2-3 weeks</span></label>
+            <label class="chip"><input type="radio" name="timeline" value="3-4 weeks"><span>3-4 weeks</span></label>
+            <label class="chip"><input type="radio" name="timeline" value="4+ weeks"><span>4+ weeks</span></label>
           </div>
         </div>
 
-        <!-- Step 3: Contact Details -->
+        <!-- Row: Business Name & Full Name (Aligned Grid) -->
         <div class="form-group-row">
+          <!-- Question 3: Business or Project Name -->
           <div class="form-group">
-            <label class="form-label" for="clientName">Your Name</label>
-            <input type="text" id="clientName" class="form-input" placeholder="e.g. Sarah Jenkins" required>
+            <label class="form-label" for="businessName">3. Business / Project Name <span class="form-required">*</span></label>
+            <input type="text" id="businessName" name="business_name" class="form-input" placeholder="e.g. Acme Corp or Project Nebula" required>
           </div>
+
+          <!-- Question 4: Full Name -->
           <div class="form-group">
-            <label class="form-label" for="clientEmail">Work Email</label>
-            <input type="email" id="clientEmail" class="form-input" placeholder="sarah@company.com" required>
+            <label class="form-label" for="clientName">4. Your Full Name <span class="form-required">*</span></label>
+            <input type="text" id="clientName" name="name" class="form-input" placeholder="e.g. Max Torreto" required>
           </div>
         </div>
 
+        <!-- Question 5: Email -->
         <div class="form-group">
-          <label class="form-label" for="projectBrief">Project Summary (Optional)</label>
-          <textarea id="projectBrief" class="form-textarea" rows="3" placeholder="Briefly describe your goals, timeline, or existing stack..."></textarea>
+          <label class="form-label" for="clientEmail">5. Email <span class="form-required">*</span></label>
+          <input type="email" id="clientEmail" name="email" class="form-input" placeholder="name@company.com" required>
+        </div>
+
+        <!-- Question 6: Project summary & details -->
+        <div class="form-group">
+          <label class="form-label" for="projectBrief">6. Project summary &amp; details <span class="form-required">*</span></label>
+          <textarea id="projectBrief" name="message" class="form-textarea" rows="3" placeholder="Describe your project goals, scope, requirements, or audience..." required></textarea>
+        </div>
+
+        <!-- Question 7: File Upload Option (Optional / Not Mandatory) -->
+        <div class="form-group">
+          <label class="form-label" for="projectFiles">7. Attach File, Wireframe or Spec <span class="form-optional">(Optional)</span></label>
+          
+          <div class="form-file-dropzone" id="fileDropzone">
+            <input type="file" id="projectFiles" name="attachment" class="form-file-input" accept=".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg,.zip,.csv,.xlsx">
+            <svg class="form-file-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            <span class="form-file-title">Click to upload or drag &amp; drop file here</span>
+            <span class="form-file-hint">PDF, DOCX, TXT, PNG, JPG, or ZIP (Max 5MB)</span>
+          </div>
+
+          <div class="form-file-error" id="fileErrorDisplay" style="display: none; color: #ff6b6b; font-size: 11.5px; margin-top: 0.4rem;"></div>
+
+          <div class="form-file-selected" id="fileSelectedDisplay" style="display: none;">
+            <span class="file-name" id="fileNameDisplay"></span>
+            <button type="button" class="form-file-remove" id="fileRemoveBtn" aria-label="Remove attached file">&times;</button>
+          </div>
         </div>
 
         <button type="submit" class="btn btn--primary btn--modal-submit" id="submitBtn">
-          <span>Send Project Inquiry</span>
+          <span>Submit Project Inquiry</span>
           <span class="btn__icon">
             <svg class="icon-arrow" viewBox="0 0 17 17">
               <path d="M3 8.5L14 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1425,8 +1469,8 @@
 
         <div class="form-success" id="formSuccess" style="display: none;">
           <div class="form-success__icon">✓</div>
-          <h4>Inquiry Received Successfully!</h4>
-          <p>Thank you! Our engineering leadership team will review your brief and follow up within 24 hours.</p>
+          <h4>Inquiry Sent to Our Inbox!</h4>
+          <p>Thank you! Your inquiry was sent directly to our team. We will review your project brief and follow up within 24 hours.</p>
         </div>
       </form>
     </div>
@@ -1434,9 +1478,13 @@
 
   <script src="assets/splash.js"></script>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   <script src="script.js?v=20260824_scale15"></script>
 =======
   <script src="script.js?v=20260825_center_leadership"></script>
+>>>>>>> Stashed changes
+=======
+  <script src="script.js?v=20260825_web3forms_5mb_validated"></script>
 >>>>>>> Stashed changes
   <script>
     (function () {
