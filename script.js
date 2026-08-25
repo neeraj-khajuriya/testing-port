@@ -320,66 +320,7 @@
     }
   });
 
-  // File Upload Dropzone Interactive Logic (Web3Forms 5MB Compliant)
-  const fileInput = document.getElementById('projectFiles');
-  const fileDropzone = document.getElementById('fileDropzone');
-  const fileSelectedDisplay = document.getElementById('fileSelectedDisplay');
-  const fileNameDisplay = document.getElementById('fileNameDisplay');
-  const fileRemoveBtn = document.getElementById('fileRemoveBtn');
-  const fileErrorDisplay = document.getElementById('fileErrorDisplay');
 
-  if (fileInput && fileDropzone && fileSelectedDisplay && fileNameDisplay) {
-    fileInput.addEventListener('change', function () {
-      if (fileInput.files && fileInput.files.length > 0) {
-        const file = fileInput.files[0];
-        const maxBytes = 5 * 1024 * 1024; // 5MB Web3Forms limit
-
-        if (file.size > maxBytes) {
-          if (fileErrorDisplay) {
-            fileErrorDisplay.textContent = '⚠️ File exceeds the 5MB limit (' + (file.size / (1024 * 1024)).toFixed(1) + 'MB). Please choose a file under 5MB.';
-            fileErrorDisplay.style.display = 'block';
-          }
-          fileInput.value = '';
-          fileSelectedDisplay.style.display = 'none';
-          return;
-        }
-
-        if (fileErrorDisplay) fileErrorDisplay.style.display = 'none';
-        const sizeStr = file.size > 1024 * 1024 
-          ? (file.size / (1024 * 1024)).toFixed(1) + ' MB'
-          : Math.round(file.size / 1024) + ' KB';
-        fileNameDisplay.textContent = '📎 ' + file.name + ' (' + sizeStr + ')';
-        fileSelectedDisplay.style.display = 'flex';
-      } else {
-        fileSelectedDisplay.style.display = 'none';
-        if (fileErrorDisplay) fileErrorDisplay.style.display = 'none';
-      }
-    });
-
-    if (fileRemoveBtn) {
-      fileRemoveBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        fileInput.value = '';
-        fileSelectedDisplay.style.display = 'none';
-        if (fileErrorDisplay) fileErrorDisplay.style.display = 'none';
-      });
-    }
-
-    ['dragenter', 'dragover'].forEach(function (eventName) {
-      fileDropzone.addEventListener(eventName, function (e) {
-        e.preventDefault();
-        fileDropzone.classList.add('is-dragover');
-      });
-    });
-
-    ['dragleave', 'drop'].forEach(function (eventName) {
-      fileDropzone.addEventListener(eventName, function (e) {
-        e.preventDefault();
-        fileDropzone.classList.remove('is-dragover');
-      });
-    });
-  }
 
   window.handleFormSubmit = function (e) {
     if (e && typeof e.preventDefault === 'function') {
@@ -417,7 +358,6 @@
     function showSuccess() {
       if (projectForm && formSuccess) {
         projectForm.reset();
-        if (fileSelectedDisplay) fileSelectedDisplay.style.display = 'none';
         submitBtn.style.display = 'none';
         formSuccess.style.display = 'block';
         setTimeout(function () {
