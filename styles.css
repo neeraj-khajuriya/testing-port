@@ -328,6 +328,109 @@ button {
   }
 }
 
+/* --- Shared Text Background & Box Movement Keyframes --- */
+@keyframes textBgAuroraFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes textBgShimmerSweep {
+  0% {
+    left: -120%;
+  }
+  100% {
+    left: 180%;
+  }
+}
+
+@keyframes textBgPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(77, 101, 255, 0.4), inset 0 0 8px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(0, 240, 255, 0.65), 0 0 45px rgba(77, 101, 255, 0.35), inset 0 0 14px rgba(255, 255, 255, 0.25);
+  }
+}
+
+/* ============================================================
+   INTERACTIVE SPOTLIGHT MOVEMENT (BOXES & TEXT BACKGROUNDS)
+   ============================================================ */
+
+/* 1. Dynamic Moving Spotlight on Cards, Boxes & Divs */
+.portfolio__item,
+.capability-row,
+.capability-card,
+.about-card,
+.process__step,
+.testimonial-card,
+.founder-card,
+.contact-card,
+.footer-cta,
+.stat-card,
+.faq-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio__item::before,
+.capability-row::before,
+.capability-card::before,
+.about-card::before,
+.process__step::before,
+.testimonial-card::before,
+.founder-card::before,
+.contact-card::before,
+.footer-cta::before,
+.stat-card::before,
+.faq-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(77, 101, 255, 0.16) 0%, rgba(0, 240, 255, 0.06) 45%, transparent 75%);
+  opacity: var(--spotlight-opacity, 0);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 2. Dynamic Moving Spotlight on Text Background Pills, Tags & Badges */
+.hero__tag,
+.experience__tag,
+.tech-item,
+.capability-tag,
+.capability-row__badge,
+.contact-card__tag,
+.filter-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__tag::before,
+.experience__tag::before,
+.tech-item::before,
+.capability-tag::before,
+.capability-row__badge::before,
+.contact-card__tag::before,
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(130px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 240, 255, 0.35) 0%, rgba(77, 101, 255, 0.18) 50%, transparent 80%);
+  opacity: var(--spotlight-opacity, 0);
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
 /* ============================================================
    BACKGROUND CANVAS & AMBIENT ANIMATIONS
    ============================================================ */
@@ -2942,11 +3045,18 @@ button {
 
 .experience__header {
   max-width: 980px;
-  margin-bottom: var(--space-2xl);
+  margin: 0 auto var(--space-2xl);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .experience__tag-wrapper {
   margin-bottom: 1.25rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .experience__tag {
@@ -2975,18 +3085,10 @@ button {
 .experience__quote {
   display: flex;
   flex-direction: column;
-<<<<<<< Updated upstream
-  gap: 0.55rem;
-}
-
-.experience__quote-main {
-  color: #f3f4f6;
-  font-weight: 400;
-=======
   align-items: center;
   text-align: center;
   gap: 0.85rem;
->>>>>>> Stashed changes
+  width: 100%;
 }
 
 .experience__quote-highlight {
@@ -2999,6 +3101,7 @@ button {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   display: block;
+  text-align: center;
 }
 
 .experience__quote-main {
@@ -3006,9 +3109,10 @@ button {
   font-weight: 400;
   color: var(--color-text-secondary);
   line-height: 1.75;
-  max-width: 680px;
+  max-width: 720px;
   margin: 0 auto;
   display: block;
+  text-align: center;
 }
 
 .founders__grid {
@@ -3140,28 +3244,28 @@ button {
 
 @media (max-width: 767px) {
   .experience__header {
-    margin-bottom: 1.75rem;
+    margin: 0 auto 1.75rem;
+    text-align: center;
+    align-items: center;
   }
   .experience__quote {
-<<<<<<< Updated upstream
-    font-size: clamp(1.35rem, 4.8vw, 1.8rem);
-    line-height: 1.36;
-    gap: 0.45rem;
-=======
     gap: 0.65rem;
     text-align: center;
     align-items: center;
->>>>>>> Stashed changes
   }
   .experience__quote-highlight {
     font-size: clamp(1.65rem, 6.5vw, 2.15rem);
     line-height: 1.22;
+    text-align: center;
   }
   .experience__quote-main {
     font-size: 0.92rem;
     line-height: 1.6;
+    text-align: center;
   }
   .experience__tag-wrapper {
+    display: flex;
+    justify-content: center;
     margin-bottom: 0.85rem;
   }
   .experience__tag {
