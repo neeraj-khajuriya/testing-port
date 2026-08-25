@@ -18,12 +18,9 @@
   <link rel="shortcut icon" href="assets/690f740bbec5818fa8301c1f_tech1.jpg" type="image/x-icon">
   <link rel="apple-touch-icon" href="assets/690f73ea8cbb96456116b427_tech.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<<<<<<< Updated upstream
-  <link rel="stylesheet" href="styles.css?v=20260825_center_leadership_quote">
-=======
-  <link rel="stylesheet" href="styles.css?v=20260825_hire_us_clean">
->>>>>>> Stashed changes
+  <link rel="stylesheet" href="styles.css?v=20260825_hire_us_final">
 
   <!-- JSON-LD Structured SEO Schema -->
   <script type="application/ld+json">
@@ -589,224 +586,56 @@
       </div>
     </section>
 
-    <!-- ======================== CAPABILITIES (One Feature Per Row: Full Image Showcase) ======================== -->
+    <!-- ======================== CAPABILITIES ======================== -->
     <section class="capabilities section-padding" id="capability">
       <div class="container">
         <div class="capabilities__header">
-          <div class="hero__tag-wrapper">
-            <span class="hero__tag">Core Services &amp; Expertise</span>
-          </div>
           <h2 class="capabilities__title">Full-Lifecycle Product &amp; Service Capabilities</h2>
-          <p class="capabilities__subtitle">End-to-end engineering and design precision built for fast-moving startups, scale-ups, and global enterprise teams.</p>
         </div>
 
-        <div class="capabilities__list">
-          <!-- Feature 1: SaaS & Product Engineering -->
-          <div class="capability-row capability-row--saas">
-            <div class="capability-row__content">
-              <div class="capability-row__badge">01 · Product Engineering</div>
-              <h3 class="capability-row__title">SaaS &amp; Digital Product Engineering</h3>
-              <p class="capability-row__desc">
-                We architect and engineer complete software products from initial concept to high-velocity scale. We deliver resilient backend APIs, distributed database schemas, and reactive web/mobile applications engineered for 99.99% reliability and sub-50ms query latency.
-              </p>
-              
-              <ul class="capability-row__features">
-                <li>
-                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#4d65ff" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#4d65ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>End-to-End Architecture &amp; Rapid MVP Builds</span>
-                </li>
-                <li>
-                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#4d65ff" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#4d65ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>High-Throughput Node.js, Python &amp; Go Microservices</span>
-                </li>
-                <li>
-                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#4d65ff" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#4d65ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Sub-Second Response Times &amp; Real-Time Data Sync</span>
-                </li>
-              </ul>
-
-              <div class="capability-row__tags">
-                <span class="capability-tag">React / Next.js</span>
-                <span class="capability-tag">Node.js / Python</span>
-                <span class="capability-tag">PostgreSQL / Redis</span>
-                <span class="capability-tag">AWS Cloud</span>
-              </div>
-
-              <div class="capability-row__action">
-                <button class="btn btn--primary js-open-modal" type="button">
-                  <span>Build Your Product</span>
-                  <svg class="icon-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
+        <div class="capabilities__grid">
+          <!-- Capability 1: SaaS & Product Engineering -->
+          <div class="capability-card">
+            <div class="capability-card__img-wrapper">
+              <img src="assets/saas_product_engineering_3d.svg" alt="SaaS &amp; Product Engineering" class="capability-card__img" width="110" height="110">
             </div>
-
-            <div class="capability-row__image-box">
-              <div class="capability-row__glow"></div>
-              <img
-                src="assets/SaaS_Product_Engineering.png"
-                alt="SaaS and Product Engineering 3D Architecture"
-                class="capability-row__img"
-                width="1536"
-                height="1024"
-                decoding="async"
-              >
-            </div>
+            <h3 class="capability-card__title">SaaS &amp; Product Engineering</h3>
+            <p class="capability-card__desc">
+              We design and engineer complete software products from MVP to enterprise scale. High-performance frontends, resilient backend APIs, and database architectures optimized for speed and reliability.
+            </p>
           </div>
 
-          <!-- Feature 2: Design Systems & UX -->
-          <div class="capability-row capability-row--design">
-            <div class="capability-row__content">
-              <div class="capability-row__badge">02 · Design Systems &amp; UX</div>
-              <h3 class="capability-row__title">Multi-Brand Design Systems &amp; UX Engineering</h3>
-              <p class="capability-row__desc">
-                Eliminate design debt and accelerate team shipping velocity. We construct scalable, tokenized design systems and accessible component libraries that bridge the gap between Figma design files and production codebases.
-              </p>
-
-              <ul class="capability-row__features">
-                <li>
-                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#7ed957" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#7ed957" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Custom Figma UI Kits &amp; Semantic Token Architectures</span>
-                </li>
-                <li>
-                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#7ed957" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#7ed957" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Production-Ready React / Vue / Tailwind Component Kits</span>
-                </li>
-                <li>
-                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#7ed957" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#7ed957" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>WCAG 2.1 AA Accessibility &amp; Storybook Documentation</span>
-                </li>
-              </ul>
-
-              <div class="capability-row__tags">
-                <span class="capability-tag">Figma Tokens</span>
-                <span class="capability-tag">Storybook</span>
-                <span class="capability-tag">Radix UI</span>
-                <span class="capability-tag">Atomic Design</span>
-              </div>
-
-              <div class="capability-row__action">
-                <button class="btn btn--primary js-open-modal" type="button">
-                  <span>Scale Your Design System</span>
-                  <svg class="icon-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
+          <!-- Capability 2: Design Systems & UX -->
+          <div class="capability-card">
+            <div class="capability-card__img-wrapper">
+              <img src="assets/design_systems_ux_3d.svg" alt="Design Systems &amp; UX" class="capability-card__img" width="110" height="110">
             </div>
-
-            <div class="capability-row__image-box">
-              <div class="capability-row__glow"></div>
-              <img
-                src="assets/Design_System_UX.png"
-                alt="Multi-Brand Design Systems and UX Engineering 3D Model"
-                class="capability-row__img"
-                width="1536"
-                height="1024"
-                decoding="async"
-              >
-            </div>
+            <h3 class="capability-card__title">Design Systems &amp; UX</h3>
+            <p class="capability-card__desc">
+              Scale your product without design debt. We build multi-brand component libraries and tokenized systems in Figma and code, establishing a single source of truth that boosts developer velocity.
+            </p>
           </div>
 
-          <!-- Feature 3: Brand & Digital Experience -->
-          <div class="capability-row capability-row--brand">
-            <div class="capability-row__content">
-              <div class="capability-row__badge">03 · Brand &amp; Motion</div>
-              <h3 class="capability-row__title">Interactive Brand &amp; Digital Experience Design</h3>
-              <p class="capability-row__desc">
-                Command immediate authority in your market. We create distinct visual identities, interactive 3D WebGL scenes, and high-conversion landing experiences that captivate users and convert visitors into long-term loyal customers.
-              </p>
-
-              <ul class="capability-row__features">
-                <li>
-                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#00f0ff" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#00f0ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Distinct Visual Identities, Logos &amp; Brand Guidelines</span>
-                </li>
-                <li>
-                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#00f0ff" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#00f0ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Interactive 3D WebGL, Canvas &amp; Dynamic Spline Scenes</span>
-                </li>
-                <li>
-                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#00f0ff" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#00f0ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Micro-Animations &amp; 60 FPS Fluid Physics Interactions</span>
-                </li>
-              </ul>
-
-              <div class="capability-row__tags">
-                <span class="capability-tag">Three.js / WebGL</span>
-                <span class="capability-tag">Motion UX</span>
-                <span class="capability-tag">Brand Strategy</span>
-                <span class="capability-tag">Conversion UX</span>
-              </div>
-
-              <div class="capability-row__action">
-                <button class="btn btn--primary js-open-modal" type="button">
-                  <span>Elevate Your Brand</span>
-                  <svg class="icon-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
+          <!-- Capability 3: Brand & Digital Experience -->
+          <div class="capability-card">
+            <div class="capability-card__img-wrapper">
+              <img src="assets/brand_digital_experience_3d.svg" alt="Brand &amp; Digital Experience" class="capability-card__img" width="110" height="110">
             </div>
-
-            <div class="capability-row__image-box">
-              <div class="capability-row__glow"></div>
-              <img
-                src="assets/Brand_Digital_Experience.png"
-                alt="Interactive Brand and Digital Experience 3D Artwork"
-                class="capability-row__img"
-                width="1536"
-                height="1024"
-                decoding="async"
-              >
-            </div>
+            <h3 class="capability-card__title">Brand &amp; Digital Experience</h3>
+            <p class="capability-card__desc">
+              Position your company to lead its market. We craft cohesive visual identities, interactive 3D web experiences, and product storytelling that create instant credibility and authority.
+            </p>
           </div>
 
-          <!-- Feature 4: Enterprise Web & Custom Services -->
-          <div class="capability-row capability-row--enterprise">
-            <div class="capability-row__content">
-              <div class="capability-row__badge">04 · Enterprise &amp; Scale</div>
-              <h3 class="capability-row__title">Enterprise Web Platforms &amp; Dedicated Dev Pods</h3>
-              <p class="capability-row__desc">
-                We partner with high-growth agencies and enterprise organizations as their core technical delivery engine. We engineer custom web platforms with sub-second load times, headless CMS integrations, and rock-solid code maintainability.
-              </p>
-
-              <ul class="capability-row__features">
-                <li>
-                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#b077ff" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#b077ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Dedicated Engineering Pods with Fractional CTO Oversight</span>
-                </li>
-                <li>
-                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#b077ff" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#b077ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Sub-Second Global TTFB &amp; 100/100 Google Core Web Vitals</span>
-                </li>
-                <li>
-                  <svg class="capability-row__check" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#b077ff" stroke-width="1.5"/><path d="M6 10l3 3 5-6" stroke="#b077ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Enterprise Security Audits, SOC2 &amp; HIPAA Compliance</span>
-                </li>
-              </ul>
-
-              <div class="capability-row__tags">
-                <span class="capability-tag">Dedicated Pods</span>
-                <span class="capability-tag">Headless CMS</span>
-                <span class="capability-tag">Core Web Vitals</span>
-                <span class="capability-tag">SOC2 / HIPAA</span>
-              </div>
-
-              <div class="capability-row__action">
-                <button class="btn btn--primary js-open-modal" type="button">
-                  <span>Hire Dedicated Pod</span>
-                  <svg class="icon-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-              </div>
+          <!-- Capability 4: Enterprise Web & Custom Services -->
+          <div class="capability-card">
+            <div class="capability-card__img-wrapper">
+              <img src="assets/enterprise_web_3d.svg" alt="Enterprise Web &amp; Custom Services" class="capability-card__img" width="110" height="110">
             </div>
-
-            <div class="capability-row__image-box">
-              <div class="capability-row__glow"></div>
-              <img
-                src="assets/Enterprise_Web_Custom_Services.png"
-                alt="Enterprise Web Platforms and Dedicated Pods 3D Visual"
-                class="capability-row__img"
-                width="1536"
-                height="1024"
-                decoding="async"
-              >
-            </div>
+            <h3 class="capability-card__title">Enterprise Web &amp; Custom Services</h3>
+            <p class="capability-card__desc">
+              We partner with leading agencies and enterprise teams as their dedicated engineering engine. High-conversion web architectures, sub-second load times, and clean maintainable codebases built to scale.
+            </p>
           </div>
         </div>
       </div>
@@ -1255,8 +1084,8 @@
             <span class="experience__tag">Leadership &amp; Execution</span>
           </div>
           <h2 class="experience__quote">
-            <span class="experience__quote-highlight">Our leadership is built on execution.</span>
             <span class="experience__quote-main">Great digital products are built by teams who combine strategic vision with hands-on engineering.</span>
+            <span class="experience__quote-highlight">Our leadership is built on execution.</span>
           </h2>
         </div>
 
@@ -1279,7 +1108,7 @@
                 <span class="founder-card__role">Founder &amp; CEO</span>
               </div>
               <p class="founder-card__bio">
-                <strong>Hanu Koshti, CEO &amp; Founder of Technomitic,</strong> leads the company’s vision, strategy, and product direction. He works closely with clients to understand their business goals and turn complex ideas into practical digital products. With experience across software development, technology architecture, cloud platforms, and UX, Hanu is involved throughout the product lifecycle—from defining the right technical approach to guiding engineering and ensuring the final product delivers real business value.
+                <strong>Hanu Koshti, CEO &amp; Founder of Technomitic,</strong> directs the company’s strategic vision, market positioning, and product engineering operations. Leveraging deep experience across software architecture, cloud platforms, and UX strategy, Hanu guides our engineering teams in delivering mission-critical digital products for scaleups and enterprise agency clients worldwide.
               </p>
             </div>
           </div>
@@ -1301,7 +1130,7 @@
                 <span class="founder-card__role">Co-Founder &amp; CTO</span>
               </div>
               <p class="founder-card__bio">
-                <strong>Neeraj Khajuriya, Co-Founder &amp; CTO of Technomitic,</strong> leads the company’s technical direction and engineering. He focuses on software architecture, system design, scalable backend infrastructure, and frontend performance, ensuring that the products we build remain reliable as they grow. Neeraj works closely with the engineering team on technical decisions, development standards, and implementation, with a strong focus on building secure, efficient, and scalable systems.
+                <strong>Neeraj Khajuriya, Co-Founder &amp; CTO of Technomitic,</strong> spearheads technical architecture, system design, and engineering excellence across all client and proprietary product initiatives. Specializing in scalable distributed systems, high-concurrency cloud backends, and frontend performance optimization, Neeraj ensures every software platform we build is secure, resilient, and future-proof.
               </p>
             </div>
           </div>
@@ -1537,49 +1366,56 @@
       
       <div class="modal__header">
         <span class="modal__tag"><span class="btn__dot"></span> Fast Response · 24h Turnaround</span>
-        <h3 class="modal__title" id="modalTitle">Work with Us — Technomitic</h3>
-        <p class="modal__subtitle">Tell us about your product or engineering goals to receive a scoped estimate and timeline.</p>
+        <h3 class="modal__title" id="modalTitle">Project Inquiry</h3>
+        <p class="modal__subtitle">It's normal to have questions! Tell us about your goals to receive a scoped estimate and timeline.</p>
       </div>
 
-      <form class="modal__form" id="projectForm" onsubmit="event.preventDefault(); handleFormSubmit();">
-        <!-- Step 1: Project Type -->
+      <form class="modal__form" id="projectForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" onsubmit="handleFormSubmit(event);">
+        <!-- Web3Forms Direct Inbox Integration -->
+        <input type="hidden" name="access_key" value="ecbb8ceb-0cef-4d5f-b126-848512aef98c">
+        <input type="hidden" name="subject" value="New Project Inquiry — Technomitic">
+        <input type="hidden" name="from_name" value="Technomitic Client Intake">
+        <input type="checkbox" name="botcheck" class="hidden" style="display:none;">
+        
+        <!-- Question 1: What services are you looking for? -->
         <div class="form-group">
-          <label class="form-label">1. Select Project Scope</label>
+          <label class="form-label">1. What services are you looking for? <span class="form-required">*</span></label>
           <div class="chip-grid">
-            <label class="chip"><input type="radio" name="projectType" value="SaaS MVP" checked><span>SaaS MVP Product</span></label>
-            <label class="chip"><input type="radio" name="projectType" value="Dedicated Pod"><span>Dedicated Engineering Pod</span></label>
-            <label class="chip"><input type="radio" name="projectType" value="Enterprise Web"><span>Enterprise Web Platform</span></label>
-            <label class="chip"><input type="radio" name="projectType" value="Design System"><span>Design System &amp; UX</span></label>
+            <label class="chip"><input type="radio" name="services" value="Website Development" checked><span>Website Development</span></label>
+            <label class="chip"><input type="radio" name="services" value="Software Development"><span>Software Development</span></label>
+            <label class="chip"><input type="radio" name="services" value="Application Development"><span>Application Development</span></label>
+            <label class="chip"><input type="radio" name="services" value="Website Maintenance"><span>Website Maintenance</span></label>
           </div>
         </div>
 
-        <!-- Step 2: Budget Range -->
+        <!-- Question 2: What's your timeline? -->
         <div class="form-group">
-          <label class="form-label">2. Target Budget Range</label>
+          <label class="form-label">2. What's your timeline? <span class="form-required">*</span></label>
           <div class="chip-grid">
-            <label class="chip"><input type="radio" name="budget" value="$5k - $15k" checked><span>$5k - $15k</span></label>
-            <label class="chip"><input type="radio" name="budget" value="$15k - $35k"><span>$15k - $35k</span></label>
-            <label class="chip"><input type="radio" name="budget" value="$35k+"><span>$35k+ / Enterprise</span></label>
+            <label class="chip"><input type="radio" name="timeline" value="1 week"><span>1 week</span></label>
+            <label class="chip"><input type="radio" name="timeline" value="2-3 weeks" checked><span>2-3 weeks</span></label>
+            <label class="chip"><input type="radio" name="timeline" value="3-4 weeks"><span>3-4 weeks</span></label>
+            <label class="chip"><input type="radio" name="timeline" value="4+ weeks"><span>4+ weeks</span></label>
           </div>
         </div>
 
-        <!-- Step 3: Contact Details -->
+        <!-- Row: Business Name & Full Name (Aligned Grid) -->
         <div class="form-group-row">
+          <!-- Question 3: Business or Project Name -->
           <div class="form-group">
-            <label class="form-label" for="clientName">Your Name</label>
-            <input type="text" id="clientName" class="form-input" placeholder="e.g. Sarah Jenkins" required>
+            <label class="form-label" for="businessName">3. Business / Project Name <span class="form-required">*</span></label>
+            <input type="text" id="businessName" name="business_name" class="form-input" placeholder="e.g. Acme Corp or Project Nebula" required>
           </div>
+
+          <!-- Question 4: Full Name -->
           <div class="form-group">
-            <label class="form-label" for="clientEmail">Work Email</label>
-            <input type="email" id="clientEmail" class="form-input" placeholder="sarah@company.com" required>
+            <label class="form-label" for="clientName">4. Your Full Name <span class="form-required">*</span></label>
+            <input type="text" id="clientName" name="name" class="form-input" placeholder="e.g. Max Torreto" required>
           </div>
         </div>
 
+        <!-- Question 5: Email -->
         <div class="form-group">
-<<<<<<< Updated upstream
-          <label class="form-label" for="projectBrief">Project Summary (Optional)</label>
-          <textarea id="projectBrief" class="form-textarea" rows="3" placeholder="Briefly describe your goals, timeline, or existing stack..."></textarea>
-=======
           <label class="form-label" for="clientEmail">5. Email <span class="form-required">*</span></label>
           <input type="email" id="clientEmail" name="email" class="form-input" placeholder="name@company.com" required>
         </div>
@@ -1588,11 +1424,10 @@
         <div class="form-group">
           <label class="form-label" for="projectBrief">6. Project summary &amp; details <span class="form-required">*</span></label>
           <textarea id="projectBrief" name="message" class="form-textarea" rows="3" placeholder="Describe your project goals, scope, requirements, or audience..." required></textarea>
->>>>>>> Stashed changes
         </div>
 
         <button type="submit" class="btn btn--primary btn--modal-submit" id="submitBtn">
-          <span>Send Project Inquiry</span>
+          <span>Submit Project Inquiry</span>
           <span class="btn__icon">
             <svg class="icon-arrow" viewBox="0 0 17 17">
               <path d="M3 8.5L14 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1603,19 +1438,15 @@
 
         <div class="form-success" id="formSuccess" style="display: none;">
           <div class="form-success__icon">✓</div>
-          <h4>Inquiry Received Successfully!</h4>
-          <p>Thank you! Our engineering leadership team will review your brief and follow up within 24 hours.</p>
+          <h4>Inquiry Sent to Our Inbox!</h4>
+          <p>Thank you! Your inquiry was sent directly to our team. We will review your project brief and follow up within 24 hours.</p>
         </div>
       </form>
     </div>
   </div>
 
   <script src="assets/splash.js"></script>
-<<<<<<< Updated upstream
-  <script src="script.js?v=20260825_center_leadership_quote"></script>
-=======
-  <script src="script.js?v=20260825_hire_us_clean"></script>
->>>>>>> Stashed changes
+  <script src="script.js?v=20260825_hire_us_final"></script>
   <script>
     (function () {
       function tickIndiaTime() {

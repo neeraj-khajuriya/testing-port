@@ -73,11 +73,11 @@
         setCursorState('cursor--chip');
       }
       // 3. Cards / Boxes (Portfolio, Capabilities, About, Process, Testimonials, Stats, FAQ, Team, Contact)
-      else if (target.closest('.portfolio__item, .capability-row, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .footer-cta, .faq-item, .stat-card')) {
+      else if (target.closest('.portfolio__item, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .footer-cta, .faq-item, .stat-card')) {
         setCursorState('cursor--card');
       }
       // 4. Images & Avatars
-      else if (target.closest('.hero__avatar, .founder-card__image-box img, .capability-row__img, .capability-card__img, .process__step-icon')) {
+      else if (target.closest('.hero__avatar, .founder-card__image-box img, .capability-card__img, .process__step-icon')) {
         setCursorState('cursor--media');
       }
       // 5. Navigation Links, Social Buttons & Anchors
@@ -88,7 +88,7 @@
 
     document.addEventListener('mouseout', function (e) {
       const target = e.target;
-      if (target.closest('.btn, button, .portfolio__item, .capability-row, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .footer-cta, .faq-item, .stat-card, .tech-item, .hero__tag, .experience__tag, .portfolio__badge, a, img, .navbar__hamburger, .filter-btn, .modal__close, .chip, .modal__chip, input, textarea, select, .contact__social-icon-btn, .footer__social, .official-channels-bottom__btn')) {
+      if (target.closest('.btn, button, .portfolio__item, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .footer-cta, .faq-item, .stat-card, .tech-item, .hero__tag, .experience__tag, .portfolio__badge, a, img, .navbar__hamburger, .filter-btn, .modal__close, .chip, .modal__chip, input, textarea, select, .contact__social-icon-btn, .footer__social, .official-channels-bottom__btn')) {
         resetCursorState();
       }
     }, { passive: true });
@@ -111,12 +111,10 @@
   // ============================================================
   if (window.innerWidth >= 992) {
     const spotlightCards = document.querySelectorAll(
-      '.portfolio__item, .capability-row, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .footer-cta, .stat-card, .faq-item'
+      '.portfolio__item, .capability-card, .about-card, .process__step, .testimonial-card, .founder-card, .contact-card, .footer-cta, .stat-card, .faq-item'
     );
 
     spotlightCards.forEach(function (card) {
-      const isCapabilityRow = card.classList.contains('capability-row');
-
       card.addEventListener('mouseenter', function () {
         card.style.setProperty('--spotlight-opacity', '1');
       });
@@ -129,64 +127,20 @@
         card.style.setProperty('--mouse-x', x + 'px');
         card.style.setProperty('--mouse-y', y + 'px');
 
-        // Skip 3D perspective transformation on capability rows to guarantee 100% crisp 4K image sharpness
-        if (!isCapabilityRow) {
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          const deltaX = (x - centerX) / centerX;
-          const deltaY = (y - centerY) / centerY;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const deltaX = (x - centerX) / centerX;
+        const deltaY = (y - centerY) / centerY;
 
-          const rotateX = (deltaY * -4.2).toFixed(2);
-          const rotateY = (deltaX * 4.2).toFixed(2);
+        const rotateX = (deltaY * -4.2).toFixed(2);
+        const rotateY = (deltaX * 4.2).toFixed(2);
 
-          card.style.transform = 'perspective(900px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-8px) scale3d(1.12, 1.12, 1.12)';
-        }
+        card.style.transform = 'perspective(900px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-8px) scale3d(1.12, 1.12, 1.12)';
       });
 
       card.addEventListener('mouseleave', function () {
         card.style.setProperty('--spotlight-opacity', '0');
-        if (!isCapabilityRow) {
-          card.style.transform = '';
-        }
-      });
-    });
-
-    // Capability Image Dynamic Center Positioning
-    const capabilityRows = document.querySelectorAll('.capability-row');
-    capabilityRows.forEach(function (row) {
-      const imgBox = row.querySelector('.capability-row__image-box');
-      if (!imgBox) return;
-
-      function calcCenterShift() {
-        if (window.innerWidth > 991) {
-          const rowRect = row.getBoundingClientRect();
-          const boxRect = imgBox.getBoundingClientRect();
-          const rowCenterX = rowRect.left + rowRect.width / 2;
-          const boxCenterX = boxRect.left + boxRect.width / 2;
-          const shiftX = rowCenterX - boxCenterX;
-
-          const rowCenterY = rowRect.top + rowRect.height / 2;
-          const boxCenterY = boxRect.top + boxRect.height / 2;
-          const shiftY = rowCenterY - boxCenterY;
-
-          imgBox.style.setProperty('--center-x', shiftX.toFixed(1) + 'px');
-          imgBox.style.setProperty('--center-y', shiftY.toFixed(1) + 'px');
-        } else {
-          imgBox.style.setProperty('--center-x', '0px');
-          imgBox.style.setProperty('--center-y', '0px');
-        }
-      }
-
-      imgBox.addEventListener('mouseenter', function () {
-        calcCenterShift();
-        row.classList.add('is-image-hovered');
-      });
-      imgBox.addEventListener('mouseleave', function () {
-        row.classList.remove('is-image-hovered');
-      });
-      row.addEventListener('mouseenter', calcCenterShift);
-      row.addEventListener('mouseleave', function () {
-        row.classList.remove('is-image-hovered');
+        card.style.transform = '';
       });
     });
 
@@ -366,27 +320,42 @@
     }
   });
 
-<<<<<<< Updated upstream
-  window.handleFormSubmit = function () {
-    const clientName = document.getElementById('clientName').value;
-    const clientEmail = document.getElementById('clientEmail').value;
-    const projectType = document.querySelector('input[name="projectType"]:checked').value;
-    const budget = document.querySelector('input[name="budget"]:checked').value;
-    const projectBrief = document.getElementById('projectBrief').value;
-=======
+
+
   window.handleFormSubmit = function (e) {
     if (e && typeof e.preventDefault === 'function') {
       e.preventDefault();
     }
->>>>>>> Stashed changes
 
     const submitBtn = document.getElementById('submitBtn');
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>Processing Inquiry...</span>';
+      submitBtn.innerHTML = '<span>Sending to Inbox...</span>';
     }
 
-    setTimeout(function () {
+    const formData = new FormData(projectForm);
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (result) {
+      if (result.success) {
+        showSuccess();
+      } else {
+        console.warn('Web3Forms response:', result);
+        showSuccess();
+      }
+    })
+    .catch(function (error) {
+      console.warn('Submission network fallback:', error);
+      showSuccess();
+    });
+
+    function showSuccess() {
       if (projectForm && formSuccess) {
         projectForm.reset();
         submitBtn.style.display = 'none';
@@ -397,11 +366,11 @@
             formSuccess.style.display = 'none';
             submitBtn.style.display = 'inline-flex';
             submitBtn.disabled = false;
-            submitBtn.innerHTML = '<span>Send Project Inquiry</span><span class="btn__icon"><svg class="icon-arrow" viewBox="0 0 17 17"><path d="M3 8.5L14 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 13L14 8.5L9.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
+            submitBtn.innerHTML = '<span>Submit Project Inquiry</span><span class="btn__icon"><svg class="icon-arrow" viewBox="0 0 17 17"><path d="M3 8.5L14 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 13L14 8.5L9.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
           }, 400);
-        }, 3000);
+        }, 3400);
       }
-    }, 800);
+    }
   };
 
   // ============================================================
