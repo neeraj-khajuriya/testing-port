@@ -2665,10 +2665,13 @@ button {
 
 .experience__header {
   max-width: 980px;
-  margin-bottom: var(--space-2xl);
+  margin: 0 auto var(--space-2xl);
+  text-align: center;
 }
 
 .experience__tag-wrapper {
+  display: flex;
+  justify-content: center;
   margin-bottom: 1.25rem;
 }
 
@@ -2702,6 +2705,8 @@ button {
   letter-spacing: -0.025em;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 0.55rem;
 }
 
@@ -2738,6 +2743,7 @@ button {
   gap: var(--space-xl);
   position: relative;
   overflow: hidden;
+  text-align: center;
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
               border-color var(--transition-base), 
               box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2788,18 +2794,22 @@ button {
 .founder-card__content {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   flex-grow: 1;
 }
 
 .founder-card__header {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
   margin-bottom: 1.15rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   padding-bottom: 1.15rem;
+  width: 100%;
+  text-align: center;
 }
 
 .founder-card__name {
@@ -2807,6 +2817,7 @@ button {
   font-weight: 600;
   letter-spacing: 0.01em;
   color: #ffffff;
+  text-align: center;
 }
 
 .founder-card__role {
@@ -2832,6 +2843,7 @@ button {
   font-size: var(--fs-sm);
   color: #a8a8a8;
   line-height: 1.85;
+  text-align: center;
 }
 
 .founder-card__bio strong {
@@ -2848,14 +2860,19 @@ button {
 
 @media (max-width: 767px) {
   .experience__header {
-    margin-bottom: 1.75rem;
+    margin: 0 auto 1.75rem;
+    text-align: center;
   }
   .experience__quote {
     font-size: clamp(1.35rem, 4.8vw, 1.8rem);
     line-height: 1.36;
     gap: 0.45rem;
+    text-align: center;
+    align-items: center;
   }
   .experience__tag-wrapper {
+    display: flex;
+    justify-content: center;
     margin-bottom: 0.85rem;
   }
   .experience__tag {
@@ -2865,16 +2882,19 @@ button {
   .founder-card {
     padding: 1.65rem 1.25rem;
     gap: 1.15rem;
+    text-align: center;
   }
   .founder-card__image-box {
     height: clamp(250px, 48vw, 320px);
   }
   .founder-card__name {
     font-size: 1.2rem;
+    text-align: center;
   }
   .founder-card__bio {
     font-size: var(--fs-xs);
     line-height: 1.65;
+    text-align: center;
   }
 }
 
