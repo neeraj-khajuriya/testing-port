@@ -366,12 +366,19 @@
     }
   });
 
+<<<<<<< Updated upstream
   window.handleFormSubmit = function () {
     const clientName = document.getElementById('clientName').value;
     const clientEmail = document.getElementById('clientEmail').value;
     const projectType = document.querySelector('input[name="projectType"]:checked').value;
     const budget = document.querySelector('input[name="budget"]:checked').value;
     const projectBrief = document.getElementById('projectBrief').value;
+=======
+  window.handleFormSubmit = function (e) {
+    if (e && typeof e.preventDefault === 'function') {
+      e.preventDefault();
+    }
+>>>>>>> Stashed changes
 
     const submitBtn = document.getElementById('submitBtn');
     if (submitBtn) {
